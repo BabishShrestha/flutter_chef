@@ -13,7 +13,12 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: kPrimaryScaffoldColor,
       body: Container(
         alignment: Alignment.center,
-        child: Column(),
+        child: Column(
+          children: [
+            Icon(Icons.food_bank_rounded),
+            Icon(Icons.fastfood_outlined)
+          ],
+        ),
       ),
     );
   }

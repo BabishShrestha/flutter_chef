@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chef/screens/home.dart';
 import 'package:flutter_chef/screens/splashscreen.dart';
 import 'package:flutter_chef/shared/constants.dart';
 
@@ -15,7 +16,7 @@ class FlutterChef extends StatelessWidget {
         appBarTheme: AppBarTheme(color: kAppBarColor),
         scaffoldBackgroundColor: kPrimaryScaffoldColor,
       ),
-      home: SplashScreen(),
+      home: Home(),
     );
   }
 }
