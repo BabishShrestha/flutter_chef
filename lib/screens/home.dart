@@ -11,56 +11,95 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool _pressed = false;
+  var _heartpressed = false;
+  var _selectedIndex = 0;
+
+  static const List<Widget> _item = [
+    Text('Home page'),
+    Text('Explore page'),
+    Text('Profile')
+  ];
+
+  void _selectedOnTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(padding: EdgeInsets.only(right: 20, top: 10)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(padding: EdgeInsets.only(right: 20, top: 10)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: IconButton(
                     onPressed: () {},
                     icon: Icon(
                       Icons.menu_sharp,
                     ),
                   ),
-                  Container(
+                ),
+                Expanded(
+                  flex: 4,
+                  child: Container(
                     alignment: Alignment.centerRight,
-                    height: 50,
-                    width: 200,
-                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Icon(FontAwesomeIcons.search),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(FontAwesomeIcons.search),
+                    ),
                   ),
-                  IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _pressed = _pressed == false ? true : false;
-                          // if (_pressed == true) {
-                          //   _pressed = false;
-                          //   icon = FontAwesomeIcons.solidHeart;
-                          // } else {
-                          //   _pressed = true;
-                          //   icon = FontAwesomeIcons.heart;
-                          // }
-                        });
-                      },
-                      icon: Icon(_pressed == false
-                          ? icon
-                          : FontAwesomeIcons.solidHeart))
-                ],
-              ),
-            ]),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _heartpressed = _heartpressed == false ? true : false;
+                      });
+                    },
+                    icon: Icon(_heartpressed == false
+                        ? icon
+                        : FontAwesomeIcons.solidHeart),
+                    color: _heartpressed == false ? null : kHeartcolor,
+                  ),
+                )
+              ],
+            ),
+            Container(
+              child: _item.elementAt(_selectedIndex),
+            )
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.compass),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person_alt_circle),
+            label: 'Profile',
+          )
+        ],
+        selectedItemColor: Colors.pink,
+        currentIndex: _selectedIndex,
+        onTap: _selectedOnTap,
       ),
     );
   }
