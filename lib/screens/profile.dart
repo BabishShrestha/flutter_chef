@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chef/shared/constants.dart';
@@ -43,9 +44,20 @@ class Profile extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(left: 130),
                     decoration: BoxDecoration(shape: BoxShape.circle),
-                    child: CircleAvatar(
-                      radius: 80,
-                      backgroundImage:,
+                    child: CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      imageBuilder: (context, imageProvider) => Container(
+                        width: 160.0,
+                        height: 160.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: imageProvider, fit: BoxFit.cover),
+                        ),
+                      ),
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
                   ),
 
@@ -101,7 +113,7 @@ class buildProfile extends StatelessWidget {
               widthFactor: 3,
               child: Text(" $text :",
                   style:
-                  kProfileTitlestyle.copyWith(fontWeight: FontWeight.bold)),
+                      kProfileTitlestyle.copyWith(fontWeight: FontWeight.bold)),
             ),
             SizedBox(
               width: 10,
