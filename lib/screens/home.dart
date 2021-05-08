@@ -2,105 +2,78 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_chef/shared/constants.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_chef/widgets/Detail_card.dart';
+import 'package:flutter_chef/widgets/category_title.dart';
+import 'package:flutter_chef/widgets/food_card.dart';
 
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
+import '../recipedata.dart';
 
-class _HomeState extends State<Home> {
-  var _heartpressed = false;
-  var _selectedIndex = 0;
-
-  static const List<Widget> _item = [
-    Text('Home page'),
-    Text('Explore page'),
-    Text('Profile')
-  ];
-
-  void _selectedOnTap(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
+class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Padding(padding: EdgeInsets.only(right: 20, top: 10)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.menu_sharp,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Container(
-                    alignment: Alignment.centerRight,
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(FontAwesomeIcons.search),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _heartpressed = _heartpressed == false ? true : false;
-                      });
-                    },
-                    icon: Icon(_heartpressed == false
-                        ? icon
-                        : FontAwesomeIcons.solidHeart),
-                    color: _heartpressed == false ? null : kHeartcolor,
-                  ),
-                )
-              ],
-            ),
-            Container(
-              child: _item.elementAt(_selectedIndex),
-            )
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.compass),
-            label: 'Explore',
+    return ListView(
+      children: [
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CategoryTitle(
+                title: "All",
+              ),
+              CategoryTitle(title: "Cakes & Dessert", active: true),
+              CategoryTitle(title: "Momo"),
+              CategoryTitle(title: "Biryani"),
+              CategoryTitle(title: "Burgers"),
+              CategoryTitle(title: "Pizzas"),
+              CategoryTitle(title: "Fried Chicken"),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person_alt_circle),
-            label: 'Profile',
-          )
-        ],
-        selectedItemColor: Colors.pink,
-        currentIndex: _selectedIndex,
-        onTap: _selectedOnTap,
-      ),
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              for (var recipe in recipeList)
+                FoodCard(
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return DetailCard(recipe);
+                      }),
+                    );
+                  },
+                  title: recipe.title,
+                  image: recipe.circledimage,
+                  calories: recipe.calories,
+                  description: recipe.description,
+                  ingredient: recipe.subtext,
+                ),
+              // FoodCard(
+              //   title: "Caramel Filled Chocolate Cookies",
+              //   image: "assets/cookie.jpg",
+              //   calories: "253 calories",
+              //   ingredient: "Caramel",
+              //   description:
+              //       "Chocolate cookie dough is wrapped around caramel filled chocolate candies. We have these at Christmas time each year. They are delicious! Hope you enjoy them too.",
+              // )
+            ],
+          ),
+        )
+      ],
     );
   }
 }
+
+//
+// title: "Vegan salad bowl",
+// image: "assets/images/image_1.png",
+// price: 20,
+// calories: "420Kcal",
+// description:
+// "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ",
+// ),
