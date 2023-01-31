@@ -1,23 +1,25 @@
+import 'package:flutter_chef/features/recipe/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chef/screens/home.dart';
-import 'package:flutter_chef/screens/profile.dart';
-import 'package:flutter_chef/shared/MenuBar.dart';
-import 'package:flutter_chef/shared/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'core/shared/category_menu.dart';
+import 'core/shared/constants.dart';
+import 'features/profile/profile.dart';
+
 void main() {
-  runApp(FlutterChef());
+  runApp(const FlutterChef());
 }
 
 class FlutterChef extends StatefulWidget {
-  static List<Widget> _item = [
-    Expanded(child: Homepage()),
-    Expanded(child: Profile())
+  static final List<Widget> _item = [
+    const Expanded(child: Homepage()),
+    const Expanded(child: Profile())
   ];
+  const FlutterChef({super.key});
 
   @override
-  _FlutterChefState createState() => _FlutterChefState();
+  State<FlutterChef> createState() => _FlutterChefState();
 }
 
 class _FlutterChefState extends State<FlutterChef> {
@@ -37,19 +39,19 @@ class _FlutterChefState extends State<FlutterChef> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          appBarTheme:
-              AppBarTheme(color: kAppBarColor, foregroundColor: Colors.black),
+          appBarTheme: const AppBarTheme(
+              color: kAppBarColor, foregroundColor: Colors.black),
           scaffoldBackgroundColor: kPrimaryScaffoldColor,
-          textTheme: TextTheme(bodyText1: TextStyle(color: kTextColor))),
+          textTheme: const TextTheme(bodyLarge: TextStyle(color: kTextColor))),
       home: Scaffold(
         body: SafeArea(
-          minimum: EdgeInsets.only(top: 1),
+          minimum: const EdgeInsets.only(top: 1),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               //used for spacing on top
 
-              MenuBar(),
+              const CategoryMenu(),
               //to display the selected button from Nav Bar
               Container(
                 child: FlutterChef._item.elementAt(_selectedIndex),
@@ -60,7 +62,7 @@ class _FlutterChefState extends State<FlutterChef> {
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(FontAwesomeIcons.home), label: 'Home'),
+                icon: Icon(FontAwesomeIcons.house), label: 'Home'),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.person_alt_circle),
               label: 'Profile',
