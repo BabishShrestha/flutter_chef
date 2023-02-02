@@ -113,10 +113,8 @@ class _DetailCardState extends State<DetailCard> {
                   ),
 
                   //Spacing
-                  const Expanded(
-                    child: SizedBox(
-                      width: 10,
-                    ),
+                  const SizedBox(
+                    width: 10,
                   ),
 
                   //Rating Bar
@@ -174,24 +172,16 @@ class _DetailCardState extends State<DetailCard> {
                 "Ingredients:",
                 style: kProfileTextstyle,
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 18),
-                      decoration: BoxDecoration(
-                        color: kPrimaryColor.withOpacity(.19),
-                        borderRadius: BorderRadius.circular(27),
-                      ),
-                      child: AutoSizeText(
-                        widget.recipe.ingredients,
-                        maxLines: 20,
-                      ),
-                    ),
-                  ],
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 18),
+                decoration: BoxDecoration(
+                  color: kPrimaryColor.withOpacity(.19),
+                  borderRadius: BorderRadius.circular(27),
+                ),
+                child: AutoSizeText(
+                  widget.recipe.ingredients,
+                  maxLines: 20,
                 ),
               ),
               const Text(
