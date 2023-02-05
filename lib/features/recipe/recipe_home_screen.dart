@@ -2,8 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chef/core/widgets/detail_card.dart';
 import 'package:flutter_chef/core/widgets/category_title.dart';
 import 'package:flutter_chef/core/widgets/food_card.dart';
+import 'package:flutter_chef/features/recipe/domain/meal.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../recipedata.dart';
+import 'infrastructure/meal_controller.dart';
+
+List<String> categories = [
+  'All',
+  'Cakes & Dessert',
+  'Momo',
+  'Biryani',
+  'Burgers',
+  'Pizzas',
+  'Fried Chicken'
+];
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -12,25 +26,25 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              CategoryTitle(
-                title: "All",
-              ),
-              CategoryTitle(title: "Cakes & Dessert", active: true),
-              CategoryTitle(title: "Momo"),
-              CategoryTitle(title: "Biryani"),
-              CategoryTitle(title: "Burgers"),
-              CategoryTitle(title: "Pizzas"),
-              CategoryTitle(title: "Fried Chicken"),
-            ],
-          ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.05,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.length,
+              itemBuilder: ((context, index) {
+                return CategoryTitle(
+                  title: categories[index],
+                );
+              })),
         ),
         const SizedBox(
           height: 30,
+        ),
+        Center(
+          child: Text(
+            'Popular Recipes',
+            style: Typography.blackMountainView.displayLarge,
+          ),
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -50,10 +64,11 @@ class Homepage extends StatelessWidget {
                   },
                   title: recipe.title,
                   image: recipe.circledimage,
-                  calories: recipe.calories,
+                  time: recipe.calories,
                   description: recipe.description,
                   ingredient: recipe.subtext,
                 ),
+
               // FoodCard(
               //   title: "Caramel Filled Chocolate Cookies",
               //   image: "assets/cookie.jpg",

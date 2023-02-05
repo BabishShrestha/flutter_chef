@@ -5,7 +5,7 @@ class FoodCard extends StatelessWidget {
   final String title;
   final String? ingredient;
   final String image;
-  final String? calories;
+  final String? time;
   final String? description;
   final void Function()? press;
 
@@ -14,7 +14,7 @@ class FoodCard extends StatelessWidget {
     required this.title,
     this.ingredient,
     required this.image,
-    this.calories,
+    this.time,
     this.description,
     this.press,
   }) : super(key: key);
@@ -23,84 +23,39 @@ class FoodCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: press,
-      child: Container(
-        margin: const EdgeInsets.only(left: 20),
-        height: 400,
-        width: 270,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Stack(
           children: <Widget>[
-            // Big light background
-            Positioned(
-              right: 0,
-              bottom: 0,
-              child: Container(
-                height: 380,
-                width: 250,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(34),
-                  color: kPrimaryColor.withOpacity(.06),
-                ),
-              ),
-            ),
-            // Rounded background
-            Positioned(
-              top: 10,
-              left: 10,
-              child: Container(
-                height: 181,
-                width: 181,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: kPrimaryColor.withOpacity(.15),
-                ),
-              ),
-            ),
             // Food Image
-            Positioned(
-              top: 7,
-              left: 1,
-              child: Container(
-                decoration: const BoxDecoration(shape: BoxShape.circle),
-                child: CircleAvatar(
-                  radius: 90,
-                  backgroundImage: AssetImage(image),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.45,
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: Image.network(
+                  'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-
-            Positioned(
-              top: 201,
-              left: 40,
-              child: SizedBox(
-                width: 210,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    Text(
-                      "With $ingredient",
-                      style: TextStyle(
-                        color: kTextColor.withOpacity(.4),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      description!,
-                      maxLines: 3,
-                      style: TextStyle(
-                        color: kTextColor.withOpacity(.65),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      calories!,
-                    )
-                  ],
-                ),
+            Container(
+              margin: EdgeInsets.all(16),
+              padding: EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.black45.withOpacity(0.2),
               ),
+              child: Row(mainAxisSize: MainAxisSize.min, children: const [
+                Icon(
+                  Icons.timer_outlined,
+                  color: Colors.white,
+                ),
+                Text(
+                  '15 mins',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ]),
             ),
           ],
         ),

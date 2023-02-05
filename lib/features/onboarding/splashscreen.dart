@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_chef/features/recipe/home.dart';
+import 'package:flutter_chef/features/recipe/recipe_home_screen.dart';
 import 'package:flutter_chef/core/shared/constants.dart';
 
 class SplashScreen extends StatefulWidget {

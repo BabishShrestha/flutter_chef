@@ -42,13 +42,15 @@ class Homepage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return DetailCard( recipe: recipe,);
+                        return DetailCard(
+                          recipe: recipe,
+                        );
                       }),
                     );
                   },
                   title: recipe.title,
                   image: recipe.circledimage,
-                  calories: recipe.calories,
+                  time: recipe.calories,
                   description: recipe.description,
                   ingredient: recipe.subtext,
                 ),
