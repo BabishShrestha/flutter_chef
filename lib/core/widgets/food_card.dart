@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chef/core/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FoodCard extends StatelessWidget {
   final String title;
@@ -7,7 +7,9 @@ class FoodCard extends StatelessWidget {
   final String image;
   final String? time;
   final String? description;
-  final void Function()? press;
+  final double height;
+  final double width;
+  final void Function()? onTap;
 
   const FoodCard({
     Key? key,
@@ -16,49 +18,86 @@ class FoodCard extends StatelessWidget {
     required this.image,
     this.time,
     this.description,
-    this.press,
+    this.onTap,
+    required this.height,
+    required this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: press,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Stack(
-          children: <Widget>[
-            // Food Image
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.45,
-              height: MediaQuery.of(context).size.height * 0.3,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
-                  fit: BoxFit.cover,
+      onTap: onTap,
+      child: Column(
+        children: [
+          Stack(
+            fit: StackFit.passthrough,
+            // alignment: Alignment.center,
+            children: <Widget>[
+              // Food Image
+              SizedBox(
+                width: width,
+                height: height,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Image.network(
+                    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.black45.withOpacity(0.2),
+              Container(
+                margin: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.black45.withOpacity(0.2),
+                ),
+                child: Row(mainAxisSize: MainAxisSize.min, children: const [
+                  Icon(
+                    Icons.timer_outlined,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    '15 mins',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ]),
               ),
-              child: Row(mainAxisSize: MainAxisSize.min, children: const [
-                Icon(
-                  Icons.timer_outlined,
-                  color: Colors.white,
+              Positioned(
+                bottom: 5,
+                right: 1,
+                child: Container(
+                  margin: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(4.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.amber,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '★ 4.5',
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-                Text(
-                  '15 mins',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ]),
+              )
+            ],
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const CircleAvatar(
+              backgroundImage: AssetImage('assets/cookie.jpg'),
             ),
-          ],
-        ),
+            title: Text(
+              'Chicken Curry',
+              style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(
+              'By Ram Maharjan',
+              style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
       ),
     );
   }

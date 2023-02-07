@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chef/core/widgets/detail_card.dart';
 import 'package:flutter_chef/core/widgets/category_title.dart';
+import 'package:flutter_chef/core/widgets/detail_card.dart';
 import 'package:flutter_chef/core/widgets/food_card.dart';
-import 'package:flutter_chef/features/recipe/domain/meal.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lottie/lottie.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../recipedata.dart';
-import 'infrastructure/meal_controller.dart';
 
 List<String> categories = [
   'All',
@@ -24,63 +21,68 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.05,
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: ((context, index) {
-                return CategoryTitle(
-                  title: categories[index],
-                );
-              })),
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        Center(
-          child: Text(
-            'Popular Recipes',
-            style: Typography.blackMountainView.displayLarge,
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: ((context, index) {
+                  return CategoryTitle(
+                    title: categories[index],
+                  );
+                })),
           ),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              for (var recipe in recipeList)
-                FoodCard(
-                  press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        return DetailCard(
-                          recipe: recipe,
-                        );
-                      }),
-                    );
-                  },
-                  title: recipe.title,
-                  image: recipe.circledimage,
-                  time: recipe.calories,
-                  description: recipe.description,
-                  ingredient: recipe.subtext,
-                ),
+          const SizedBox(
+            height: 30,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Popular Recipes',
+              style: GoogleFonts.poppins(
+                  fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Expanded(
+            // height: MediaQuery.of(context).size.height,
+            child: ListView.builder(
+                itemCount: 10,
+                // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                //   crossAxisCount: 2,
+                //   mainAxisSpacing: 18,
+                //   crossAxisSpacing: 18,
+                // ),
+                itemBuilder: (context, index) {
+                  final recipe = recipeList[0];
 
-              // FoodCard(
-              //   title: "Caramel Filled Chocolate Cookies",
-              //   image: "assets/cookie.jpg",
-              //   calories: "253 calories",
-              //   ingredient: "Caramel",
-              //   description:
-              //       "Chocolate cookie dough is wrapped around caramel filled chocolate candies. We have these at Christmas time each year. They are delicious! Hope you enjoy them too.",
-              // )
-            ],
-          ),
-        )
-      ],
+                  return FoodCard(
+                    title: recipe.title,
+                    image: recipe.circledimage,
+                    time: recipe.calories,
+                    description: recipe.description,
+                    ingredient: recipe.subtext,
+                    height: MediaQuery.of(context).size.height * 0.25,
+                    width: MediaQuery.of(context).size.width,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return DetailCard(
+                            recipe: recipe,
+                          );
+                        }),
+                      );
+                    },
+                  );
+                }),
+          )
+        ],
+      ),
     );
   }
 }

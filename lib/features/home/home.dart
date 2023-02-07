@@ -38,7 +38,9 @@ class Homepage extends StatelessWidget {
             children: [
               for (var recipe in recipeList)
                 FoodCard(
-                  press: () {
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
