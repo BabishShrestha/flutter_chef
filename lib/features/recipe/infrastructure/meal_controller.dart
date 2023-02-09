@@ -31,6 +31,18 @@ class MealController<T> extends StateNotifier<BaseState> {
       },
     );
   }
+  Future<void> getMealFeedList() async {
+    state = const BaseState.loading();
+    final response = await _mealsrepo.getFeedList();
+    state = response.fold(
+      (success) {
+        return BaseState.success(data: success);
+      },
+      (failure) {
+        return BaseState.error(failure);
+      },
+    );
+  }
 }
 final getMealController =
     StateNotifierProvider.autoDispose<MealController, BaseState>(

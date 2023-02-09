@@ -40,7 +40,8 @@ class FoodCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Image.network(
-                    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
+                    image ??
+                        'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -52,14 +53,14 @@ class FoodCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.black45.withOpacity(0.2),
                 ),
-                child: Row(mainAxisSize: MainAxisSize.min, children: const [
-                  Icon(
+                child: Row(mainAxisSize: MainAxisSize.min, children: [
+                  const Icon(
                     Icons.timer_outlined,
                     color: Colors.white,
                   ),
                   Text(
-                    '15 mins',
-                    style: TextStyle(color: Colors.white),
+                    time ?? '15 mins',
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ]),
               ),
@@ -89,7 +90,7 @@ class FoodCard extends StatelessWidget {
               backgroundImage: AssetImage('assets/cookie.jpg'),
             ),
             title: Text(
-              'Chicken Curry',
+              title,
               style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
             ),
             subtitle: Text(

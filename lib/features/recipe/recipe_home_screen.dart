@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chef/core/widgets/category_title.dart';
 import 'package:flutter_chef/core/widgets/detail_card.dart';
 import 'package:flutter_chef/core/widgets/food_card.dart';
+import 'package:flutter_chef/features/recipe/domain/meal_yummly.dart';
+import 'package:flutter_chef/features/recipe/infrastructure/meal_controller.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../recipedata.dart';
@@ -16,8 +19,20 @@ List<String> categories = [
   'Fried Chicken'
 ];
 
-class Homepage extends StatelessWidget {
+class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
+
+  @override
+  ConsumerState<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends ConsumerState<Homepage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero).whenComplete(
+        () => ref.read(getMealController.notifier).getMealFeedList());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,34 +66,41 @@ class Homepage extends StatelessWidget {
           Expanded(
             // height: MediaQuery.of(context).size.height,
             child: ListView.builder(
-                itemCount: 10,
+                itemCount: 2,
                 // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 //   crossAxisCount: 2,
                 //   mainAxisSpacing: 18,
                 //   crossAxisSpacing: 18,
                 // ),
                 itemBuilder: (context, index) {
-                  final recipe = recipeList[0];
-
-                  return FoodCard(
-                    title: recipe.title,
-                    image: recipe.circledimage,
-                    time: recipe.calories,
-                    description: recipe.description,
-                    ingredient: recipe.subtext,
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    width: MediaQuery.of(context).size.width,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return DetailCard(
-                            recipe: recipe,
-                          );
-                        }),
-                      );
-                    },
-                  );
+                  // final recipe = recipeList[0];
+                  final mealList = ref.watch(getMealController);
+                  return mealList.maybeWhen(
+                      loading: () => Center(child: CircularProgressIndicator()),
+                      success: (data) {
+                        final MealFeedFeed recipe = data[index];
+                        return FoodCard(
+                          title: recipe.display!.displayName!,
+                          image: recipe.display!.images![0],
+                          time: recipe.content!.details?.totalTime,
+                          description: recipe.seo?.web!.metaTags?.description,
+                          ingredient: recipe
+                              .content!.ingredientLines?[index].ingredient,
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          width: MediaQuery.of(context).size.width,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return DetailCard(
+                                    // recipe: recipe,
+                                    );
+                              }),
+                            );
+                          },
+                        );
+                      },
+                      orElse: () => const SizedBox());
                 }),
           )
         ],
