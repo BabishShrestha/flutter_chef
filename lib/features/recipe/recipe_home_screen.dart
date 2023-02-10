@@ -93,8 +93,9 @@ class _HomepageState extends ConsumerState<Homepage> {
                               context,
                               MaterialPageRoute(builder: (context) {
                                 return DetailCard(
-                                    // recipe: recipe,
-                                    );
+                                  mealFeedDetails: recipe,
+                                  // recipe: recipe,
+                                );
                               }),
                             );
                           },

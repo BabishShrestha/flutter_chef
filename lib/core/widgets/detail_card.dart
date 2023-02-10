@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:auto_size_text/auto_size_text.dart';
@@ -12,13 +11,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../features/recipe/domain/meal.dart';
+import '../../features/recipe/domain/meal_yummly.dart';
 import '../../features/recipe/infrastructure/meal_controller.dart';
-import '../../recipedata.dart';
 
 class DetailCard extends ConsumerStatefulWidget {
   // final Recipe recipe;
 
-  const DetailCard({super.key,  });
+  const DetailCard({
+    required this.mealFeedDetails,
+    super.key,
+  });
+  final MealFeedFeed mealFeedDetails;
 
   @override
   ConsumerState<DetailCard> createState() => _DetailCardState();
@@ -28,8 +31,8 @@ class _DetailCardState extends ConsumerState<DetailCard> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero).whenComplete(
-        () => ref.read(getMealController.notifier).getRandomMeal());
+    // Future.delayed(Duration.zero).whenComplete(
+    //     () => ref.read(getMealController.notifier).getMealFeedList());
   }
 
   double? _ratingValue;
@@ -43,8 +46,7 @@ class _DetailCardState extends ConsumerState<DetailCard> {
   Widget build(
     BuildContext context,
   ) {
-    final mealItem = ref.watch(getMealController);
-
+    var mealFeedDetails = widget.mealFeedDetails;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 35,
@@ -61,51 +63,52 @@ class _DetailCardState extends ConsumerState<DetailCard> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    _active = !_active;
-                  });
-                },
-                icon: Icon(
-                  _active ? FontAwesomeIcons.solidHeart : icon,
-                  color: _active ? kPrimaryColor : null,
-                )),
+              onPressed: () {
+                setState(() {
+                  _active = !_active;
+                });
+              },
+              icon: Icon(
+                _active ? FontAwesomeIcons.solidHeart : icon,
+                color: _active ? kPrimaryColor : null,
+              ),
+            ),
           ),
         ],
       ),
-      body: mealItem.maybeWhen(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        // MovieDetailsShimmerWidget(),
-        success: (data) {
-          Meal item = data;
-
-          log(item.strMealThumb);
-          return SafeArea(
-            child: Column(
-              children: <Widget>[
-                Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    YoutubePlayWidget(item: item),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30))),
-                      child: DetailCardHeaderWidget(item: item),
-                    ),
-                  ],
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                YoutubePlayWidget(
+                    imageLink: widget.mealFeedDetails.content?.details
+                        ?.images?[0].resizableImageUrl),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))),
+                  child: DetailCardHeaderWidget(
+                      title: mealFeedDetails.display!.displayName!),
                 ),
-                DetailBodyWidget(
-                    item: item, nutritionDetail: 'widget.recipe.nutrition'),
               ],
-              // Recipe Title
             ),
-          );
-        },
-        orElse: () => const SizedBox(),
+            DetailBodyWidget(
+              instructions: widget.mealFeedDetails.content!.preparationSteps,
+              nutritionDetail: 'widget.recipe.nutrition',
+              mealServingInfo: PreparationInfoWidget(
+                  servingCount:
+                      mealFeedDetails.content?.details?.numberOfServings,
+                  timeToCook: mealFeedDetails.content?.details?.totalTime,
+                  recipeType: mealFeedDetails.recipeType?[0]),
+            ),
+          ],
+          // Recipe Title
+        ),
       ),
     );
   }
@@ -113,55 +116,59 @@ class _DetailCardState extends ConsumerState<DetailCard> {
 
 class DetailBodyWidget extends StatelessWidget {
   const DetailBodyWidget(
-      {super.key, required this.item, required this.nutritionDetail});
-  final Meal item;
+      {super.key,
+      required this.instructions,
+      required this.nutritionDetail,
+      this.mealServingInfo});
+  final List<dynamic>? instructions;
   final String nutritionDetail;
+  final Widget? mealServingInfo;
   @override
   Widget build(BuildContext context) {
-    final ingredients = [
-      item.strIngredient1,
-      item.strIngredient2,
-      item.strIngredient3,
-      item.strIngredient4,
-      item.strIngredient5,
-      item.strIngredient6,
-      item.strIngredient7,
-      item.strIngredient8,
-      item.strIngredient9,
-      item.strIngredient10,
-      item.strIngredient11,
-      item.strIngredient12,
-      item.strIngredient13,
-      item.strIngredient14,
-      item.strIngredient15,
-      item.strIngredient16,
-      item.strIngredient17,
-      item.strIngredient18,
-      item.strIngredient19,
-      item.strIngredient20,
-    ];
-    final measurement = [
-      item.strMeasure1,
-      item.strMeasure2,
-      item.strMeasure3,
-      item.strMeasure4,
-      item.strMeasure5,
-      item.strMeasure6,
-      item.strMeasure7,
-      item.strMeasure8,
-      item.strMeasure9,
-      item.strMeasure10,
-      item.strMeasure11,
-      item.strMeasure12,
-      item.strMeasure13,
-      item.strMeasure14,
-      item.strMeasure15,
-      item.strMeasure16,
-      item.strMeasure17,
-      item.strMeasure18,
-      item.strMeasure19,
-      item.strMeasure20,
-    ];
+    // final ingredients = [
+    //   item.strIngredient1,
+    //   item.strIngredient2,
+    //   item.strIngredient3,
+    //   item.strIngredient4,
+    //   item.strIngredient5,
+    //   item.strIngredient6,
+    //   item.strIngredient7,
+    //   item.strIngredient8,
+    //   item.strIngredient9,
+    //   item.strIngredient10,
+    //   item.strIngredient11,
+    //   item.strIngredient12,
+    //   item.strIngredient13,
+    //   item.strIngredient14,
+    //   item.strIngredient15,
+    //   item.strIngredient16,
+    //   item.strIngredient17,
+    //   item.strIngredient18,
+    //   item.strIngredient19,
+    //   item.strIngredient20,
+    // ];
+    // final measurement = [
+    //   item.strMeasure1,
+    //   item.strMeasure2,
+    //   item.strMeasure3,
+    //   item.strMeasure4,
+    //   item.strMeasure5,
+    //   item.strMeasure6,
+    //   item.strMeasure7,
+    //   item.strMeasure8,
+    //   item.strMeasure9,
+    //   item.strMeasure10,
+    //   item.strMeasure11,
+    //   item.strMeasure12,
+    //   item.strMeasure13,
+    //   item.strMeasure14,
+    //   item.strMeasure15,
+    //   item.strMeasure16,
+    //   item.strMeasure17,
+    //   item.strMeasure18,
+    //   item.strMeasure19,
+    //   item.strMeasure20,
+    // ];
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.5,
       child: ListView(
@@ -169,23 +176,25 @@ class DetailBodyWidget extends StatelessWidget {
           horizontal: 16.0,
         ),
         children: [
-          const SizedBox(height: 20),
-          const PreparationInfoWidget(),
+          mealServingInfo ?? const SizedBox(height: 20),
 
           // NutritionWidget(nutrition: nutritionDetail),
-          IngredientsWidget(
-            ingredients: ingredients,
-            measurement: measurement,
-          ),
+          // IngredientsWidget(
+          //   ingredients: ingredients,
+          //   measurement: measurement,
+          // ),
           // Instructions
           const Text(
             "Instructions:",
             style: kProfileTextstyle,
           ),
-          Text(
-            item.strInstructions,
-            textAlign: TextAlign.justify,
-          )
+          if (instructions != null)
+            ...instructions!.map((e) => Text(
+                  e,
+                  textAlign: TextAlign.justify,
+                ))
+          else
+            const SizedBox(),
         ],
       ),
     );
@@ -297,8 +306,17 @@ class NutritionWidget extends StatelessWidget {
 }
 
 class PreparationInfoWidget extends StatelessWidget {
+  final String? recipeType;
+
+  final int? servingCount;
+
+  final String? timeToCook;
+
   const PreparationInfoWidget({
     super.key,
+    this.recipeType,
+    required this.servingCount,
+    required this.timeToCook,
   });
 
   @override
@@ -308,22 +326,22 @@ class PreparationInfoWidget extends StatelessWidget {
       children: [
         RoundedRectangleLabel(
           titleWidget: Text(
-            '1',
+            "$servingCount",
             style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
           ),
           subtitle: 'Serving',
         ),
-        const RoundedRectangleLabel(
-          titleWidget: Icon(
+        RoundedRectangleLabel(
+          titleWidget: const Icon(
             Icons.schedule,
           ),
-          subtitle: '1 hour',
+          subtitle: timeToCook ?? '',
         ),
-        const RoundedRectangleLabel(
-          titleWidget: Icon(
+        RoundedRectangleLabel(
+          titleWidget: const Icon(
             Icons.speed,
           ),
-          subtitle: 'Easy',
+          subtitle: recipeType ?? '',
         ),
       ],
     );
@@ -333,10 +351,10 @@ class PreparationInfoWidget extends StatelessWidget {
 class DetailCardHeaderWidget extends StatelessWidget {
   const DetailCardHeaderWidget({
     super.key,
-    required this.item,
+    required this.title,
   });
 
-  final Meal item;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -351,7 +369,7 @@ class DetailCardHeaderWidget extends StatelessWidget {
               backgroundImage: AssetImage('assets/cookie.jpg'),
             ),
             title: Text(
-              item.strMeal,
+              title,
               style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
@@ -368,10 +386,10 @@ class DetailCardHeaderWidget extends StatelessWidget {
 class YoutubePlayWidget extends StatelessWidget {
   const YoutubePlayWidget({
     super.key,
-    required this.item,
+    required this.imageLink,
   });
 
-  final Meal item;
+  final String? imageLink;
 
   @override
   Widget build(BuildContext context) {
@@ -384,7 +402,7 @@ class YoutubePlayWidget extends StatelessWidget {
           child: CachedNetworkImage(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.4,
-            imageUrl: item.strMealThumb,
+            imageUrl: imageLink ?? '',
             fit: BoxFit.cover,
             errorWidget: (_, __, ___) {
               return Lottie.asset('assets/lottie/404-page-error.json');
@@ -438,6 +456,7 @@ class RoundedRectangleLabel extends StatelessWidget {
           ),
           Text(
             subtitle,
+            softWrap: true,
             style: GoogleFonts.poppins(
                 color: Colors.black45,
                 fontWeight: FontWeight.bold,
