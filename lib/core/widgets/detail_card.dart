@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../features/recipe/domain/meal.dart';
 import '../../features/recipe/domain/meal_yummly.dart';
-import '../../features/recipe/infrastructure/meal_controller.dart';
 
 class DetailCard extends ConsumerStatefulWidget {
   // final Recipe recipe;
