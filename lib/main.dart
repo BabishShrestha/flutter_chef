@@ -16,10 +16,6 @@ void main() {
 }
 
 class FlutterChef extends StatefulWidget {
-  static final List<Widget> _item = [
-    const Expanded(child: Homepage()),
-    const Expanded(child: Profile())
-  ];
   const FlutterChef({super.key});
 
   @override
@@ -28,15 +24,8 @@ class FlutterChef extends StatefulWidget {
 
 class _FlutterChefState extends State<FlutterChef> {
   //to indicate the page currently tapped
-  var _selectedIndex = 0;
 
 //to store a list of widgets to display based on user taps
-
-  void _selectedOnTap(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

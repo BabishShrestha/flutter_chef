@@ -37,7 +37,7 @@ class _NewCustomNavBarViewState extends ConsumerState<CustomNavBarView> {
 
   List<Widget> _buildScreens() {
     return [
-      const Homepage(),
+      const RecipeHomeView(),
       const DiscoverView(),
       const CartView(),
       const Profile(),

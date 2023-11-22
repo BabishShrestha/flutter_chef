@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_chef/features/recipe/recipe_home_screen.dart';
 import 'package:flutter_chef/core/shared/constants.dart';
+import 'package:flutter_chef/features/recipe/recipe_home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,12 +18,12 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         const Duration(seconds: 2),
         () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const Homepage())));
+            MaterialPageRoute(builder: (context) => const RecipeHomeView())));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: kPrimaryColor,
       body: Stack(
         fit: StackFit.expand,
@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               CircularProgressIndicator(
                 valueColor: animatedcolor,
                 backgroundColor: Colors.white,
