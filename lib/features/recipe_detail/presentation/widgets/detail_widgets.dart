@@ -1,4 +1,3 @@
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -11,56 +10,14 @@ class DetailBodyWidget extends StatelessWidget {
       {super.key,
       required this.instructions,
       required this.nutritionDetail,
-      this.mealServingInfo});
+      this.mealServingInfo,
+      this.description});
+  final String? description;
   final List<dynamic>? instructions;
   final String nutritionDetail;
   final Widget? mealServingInfo;
   @override
   Widget build(BuildContext context) {
-    // final ingredients = [
-    //   item.strIngredient1,
-    //   item.strIngredient2,
-    //   item.strIngredient3,
-    //   item.strIngredient4,
-    //   item.strIngredient5,
-    //   item.strIngredient6,
-    //   item.strIngredient7,
-    //   item.strIngredient8,
-    //   item.strIngredient9,
-    //   item.strIngredient10,
-    //   item.strIngredient11,
-    //   item.strIngredient12,
-    //   item.strIngredient13,
-    //   item.strIngredient14,
-    //   item.strIngredient15,
-    //   item.strIngredient16,
-    //   item.strIngredient17,
-    //   item.strIngredient18,
-    //   item.strIngredient19,
-    //   item.strIngredient20,
-    // ];
-    // final measurement = [
-    //   item.strMeasure1,
-    //   item.strMeasure2,
-    //   item.strMeasure3,
-    //   item.strMeasure4,
-    //   item.strMeasure5,
-    //   item.strMeasure6,
-    //   item.strMeasure7,
-    //   item.strMeasure8,
-    //   item.strMeasure9,
-    //   item.strMeasure10,
-    //   item.strMeasure11,
-    //   item.strMeasure12,
-    //   item.strMeasure13,
-    //   item.strMeasure14,
-    //   item.strMeasure15,
-    //   item.strMeasure16,
-    //   item.strMeasure17,
-    //   item.strMeasure18,
-    //   item.strMeasure19,
-    //   item.strMeasure20,
-    // ];
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.5,
       child: ListView(
@@ -69,16 +26,26 @@ class DetailBodyWidget extends StatelessWidget {
         ),
         children: [
           mealServingInfo ?? const SizedBox(height: 20),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
+          Text(
+            description ?? '',
+            style: kProfileTextstyle.copyWith(
+              fontSize: 12,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
           // NutritionWidget(nutrition: nutritionDetail),
           // IngredientsWidget(
           //   ingredients: ingredients,
           //   measurement: measurement,
           // ),
           // Instructions
-          const Text(
-            'Instructions:',
-            style: kProfileTextstyle,
+          Text(
+            'Ingredients',
+            style: kProfileTextstyle.copyWith(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           if (instructions != null)
             ...instructions!.map((e) => Text(
@@ -90,7 +57,6 @@ class DetailBodyWidget extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
 
@@ -105,10 +71,10 @@ class IngredientsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            "Ingredients:",
+            'Ingredients:',
             style: kProfileTextstyle,
           ),
         ),
@@ -171,7 +137,7 @@ class NutritionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
+        Text(
           'Nutrients:',
           style: kProfileTextstyle,
         ),
@@ -214,20 +180,26 @@ class PreparationInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         RoundedRectangleLabel(
           titleWidget: Text(
-            "$servingCount",
+            '$servingCount',
             style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
           ),
           subtitle: 'Serving',
+        ),
+        const SizedBox(
+          width: 10,
         ),
         RoundedRectangleLabel(
           titleWidget: const Icon(
             Icons.schedule,
           ),
           subtitle: timeToCook ?? '',
+        ),
+        const SizedBox(
+          width: 10,
         ),
         RoundedRectangleLabel(
           titleWidget: const Icon(
@@ -332,30 +304,24 @@ class RoundedRectangleLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: Colors.black12),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: titlePadding ??
-                const EdgeInsets.symmetric(
-                  horizontal: 8.0,
-                ),
-            child: titleWidget,
-          ),
-          Text(
-            subtitle,
-            softWrap: true,
-            style: GoogleFonts.poppins(
-                color: Colors.black45,
-                fontWeight: FontWeight.bold,
-                fontSize: 10),
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: titlePadding ??
+              const EdgeInsets.only(
+                right: 8.0,
+              ),
+          child: titleWidget,
+        ),
+        Text(
+          subtitle,
+          softWrap: true,
+          style: GoogleFonts.poppins(
+              color: Colors.black45, fontWeight: FontWeight.bold, fontSize: 10),
+        ),
+      ],
     );
   }
 }

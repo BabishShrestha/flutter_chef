@@ -26,7 +26,7 @@ class MealFeedFeed with _$MealFeedFeed {
     bool? promoted,
     bool? proRecipe,
     List<String>? recipeType,
-    String? trackingId,
+    @JsonKey(name: 'tracking-id') String? trackingId,
     FeedSeo? seo,
     PurpleContent? content,
   }) = _MealFeedFeed;
@@ -85,7 +85,7 @@ class Details with _$Details {
   const factory Details({
     String? directionsUrl,
     String? totalTime,
-    String? displayName,
+   @JsonKey(name:'display-name')  String? displayName,
     List<Image>? images,
     String? name,
     List<String>? keywords,
@@ -278,7 +278,7 @@ class IngredientMatchCount with _$IngredientMatchCount {
 class MatchesFeed with _$MatchesFeed {
   const factory MatchesFeed({
     FeedSeo? seo,
-    String? trackingId,
+    @JsonKey(name: 'tracking-id') String? trackingId,
     FluffyContent? content,
     String? type,
     List<String>? recipeType,
@@ -358,7 +358,7 @@ class Step with _$Step {
   const factory Step({
     String? displayText,
     List<StepIngredientLine>? ingredientLines,
-    String? imageUrl,
+    @JsonKey(name: 'image-url') String? imageUrl,
     List<Equipment>? equipment,
     Video? video,
     List<Timer>? timers,
@@ -606,8 +606,8 @@ class PurpleTags with _$PurpleTags {
 @freezed
 class AllergyPreference with _$AllergyPreference {
   const factory AllergyPreference({
-    String? displayName,
-    String? tagUrl,
+     @JsonKey(name:'display-name') String? displayName,
+    @JsonKey(name:'tag-url') String? tagUrl,
   }) = _AllergyPreference;
 
   factory AllergyPreference.fromJson(Map<String, dynamic> json) =>
@@ -689,7 +689,7 @@ class Yums with _$Yums {
 @freezed
 class FluffyDisplay with _$FluffyDisplay {
   const factory FluffyDisplay({
-    String? displayName,
+     @JsonKey(name:'display-name') String? displayName,
     List<String>? images,
     dynamic? flag,
     PurpleSource? source,
@@ -706,7 +706,7 @@ class FluffyDisplay with _$FluffyDisplay {
 class Profile with _$Profile {
   const factory Profile({
     String? profileName,
-    String? displayName,
+     @JsonKey(name:'display-name') String? displayName,
     String? siteUrl,
     String? pictureUrl,
     String? pageUrl,
@@ -830,10 +830,10 @@ class SpotlightSearch with _$SpotlightSearch {
 class PurpleWeb with _$PurpleWeb {
   const factory PurpleWeb({
     bool? noindex,
-    String? canonicalTerm,
-    MetaTags? metaTags,
-    List<LinkTag>? linkTags,
-    String? imageUrl,
+    @JsonKey(name: 'canonical-term') String? canonicalTerm,
+    @JsonKey(name: 'meta-tags') MetaTags? metaTags,
+    @JsonKey(name: 'link-tags') List<LinkTag>? linkTags,
+    @JsonKey(name: 'image-url') String? imageUrl,
   }) = _PurpleWeb;
 
   factory PurpleWeb.fromJson(Map<String, dynamic> json) =>
@@ -911,10 +911,10 @@ class FluffyWeb with _$FluffyWeb {
   const factory FluffyWeb({
     bool? noindex,
     String? displayTitle,
-    String? canonicalTerm,
-    MetaTags? metaTags,
-    List<LinkTag>? linkTags,
-    String? imageUrl,
+    @JsonKey(name: 'canonical-term') String? canonicalTerm,
+    @JsonKey(name: 'meta-tags') MetaTags? metaTags,
+    @JsonKey(name: 'link-tags') List<LinkTag>? linkTags,
+    @JsonKey(name: 'image-url') String? imageUrl,
   }) = _FluffyWeb;
 
   factory FluffyWeb.fromJson(Map<String, dynamic> json) =>

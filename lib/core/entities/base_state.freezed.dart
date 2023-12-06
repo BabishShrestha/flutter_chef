@@ -87,25 +87,25 @@ class _$BaseStateCopyWithImpl<T, $Res, $Val extends BaseState<T>>
 }
 
 /// @nodoc
-abstract class _$$BaseInitialCopyWith<T, $Res> {
-  factory _$$BaseInitialCopyWith(
-          _$BaseInitial<T> value, $Res Function(_$BaseInitial<T>) then) =
-      __$$BaseInitialCopyWithImpl<T, $Res>;
+abstract class _$$BaseInitialImplCopyWith<T, $Res> {
+  factory _$$BaseInitialImplCopyWith(_$BaseInitialImpl<T> value,
+          $Res Function(_$BaseInitialImpl<T>) then) =
+      __$$BaseInitialImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
-class __$$BaseInitialCopyWithImpl<T, $Res>
-    extends _$BaseStateCopyWithImpl<T, $Res, _$BaseInitial<T>>
-    implements _$$BaseInitialCopyWith<T, $Res> {
-  __$$BaseInitialCopyWithImpl(
-      _$BaseInitial<T> _value, $Res Function(_$BaseInitial<T>) _then)
+class __$$BaseInitialImplCopyWithImpl<T, $Res>
+    extends _$BaseStateCopyWithImpl<T, $Res, _$BaseInitialImpl<T>>
+    implements _$$BaseInitialImplCopyWith<T, $Res> {
+  __$$BaseInitialImplCopyWithImpl(
+      _$BaseInitialImpl<T> _value, $Res Function(_$BaseInitialImpl<T>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$BaseInitial<T> implements BaseInitial<T> {
-  const _$BaseInitial();
+class _$BaseInitialImpl<T> implements BaseInitial<T> {
+  const _$BaseInitialImpl();
 
   @override
   String toString() {
@@ -115,7 +115,7 @@ class _$BaseInitial<T> implements BaseInitial<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$BaseInitial<T>);
+        (other.runtimeType == runtimeType && other is _$BaseInitialImpl<T>);
   }
 
   @override
@@ -197,29 +197,29 @@ class _$BaseInitial<T> implements BaseInitial<T> {
 }
 
 abstract class BaseInitial<T> implements BaseState<T> {
-  const factory BaseInitial() = _$BaseInitial<T>;
+  const factory BaseInitial() = _$BaseInitialImpl<T>;
 }
 
 /// @nodoc
-abstract class _$$BaseLoadingCopyWith<T, $Res> {
-  factory _$$BaseLoadingCopyWith(
-          _$BaseLoading<T> value, $Res Function(_$BaseLoading<T>) then) =
-      __$$BaseLoadingCopyWithImpl<T, $Res>;
+abstract class _$$BaseLoadingImplCopyWith<T, $Res> {
+  factory _$$BaseLoadingImplCopyWith(_$BaseLoadingImpl<T> value,
+          $Res Function(_$BaseLoadingImpl<T>) then) =
+      __$$BaseLoadingImplCopyWithImpl<T, $Res>;
 }
 
 /// @nodoc
-class __$$BaseLoadingCopyWithImpl<T, $Res>
-    extends _$BaseStateCopyWithImpl<T, $Res, _$BaseLoading<T>>
-    implements _$$BaseLoadingCopyWith<T, $Res> {
-  __$$BaseLoadingCopyWithImpl(
-      _$BaseLoading<T> _value, $Res Function(_$BaseLoading<T>) _then)
+class __$$BaseLoadingImplCopyWithImpl<T, $Res>
+    extends _$BaseStateCopyWithImpl<T, $Res, _$BaseLoadingImpl<T>>
+    implements _$$BaseLoadingImplCopyWith<T, $Res> {
+  __$$BaseLoadingImplCopyWithImpl(
+      _$BaseLoadingImpl<T> _value, $Res Function(_$BaseLoadingImpl<T>) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$BaseLoading<T> implements BaseLoading<T> {
-  const _$BaseLoading();
+class _$BaseLoadingImpl<T> implements BaseLoading<T> {
+  const _$BaseLoadingImpl();
 
   @override
   String toString() {
@@ -229,7 +229,7 @@ class _$BaseLoading<T> implements BaseLoading<T> {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$BaseLoading<T>);
+        (other.runtimeType == runtimeType && other is _$BaseLoadingImpl<T>);
   }
 
   @override
@@ -311,24 +311,24 @@ class _$BaseLoading<T> implements BaseLoading<T> {
 }
 
 abstract class BaseLoading<T> implements BaseState<T> {
-  const factory BaseLoading() = _$BaseLoading<T>;
+  const factory BaseLoading() = _$BaseLoadingImpl<T>;
 }
 
 /// @nodoc
-abstract class _$$BaseErrorCopyWith<T, $Res> {
-  factory _$$BaseErrorCopyWith(
-          _$BaseError<T> value, $Res Function(_$BaseError<T>) then) =
-      __$$BaseErrorCopyWithImpl<T, $Res>;
+abstract class _$$BaseErrorImplCopyWith<T, $Res> {
+  factory _$$BaseErrorImplCopyWith(
+          _$BaseErrorImpl<T> value, $Res Function(_$BaseErrorImpl<T>) then) =
+      __$$BaseErrorImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({String failure});
 }
 
 /// @nodoc
-class __$$BaseErrorCopyWithImpl<T, $Res>
-    extends _$BaseStateCopyWithImpl<T, $Res, _$BaseError<T>>
-    implements _$$BaseErrorCopyWith<T, $Res> {
-  __$$BaseErrorCopyWithImpl(
-      _$BaseError<T> _value, $Res Function(_$BaseError<T>) _then)
+class __$$BaseErrorImplCopyWithImpl<T, $Res>
+    extends _$BaseStateCopyWithImpl<T, $Res, _$BaseErrorImpl<T>>
+    implements _$$BaseErrorImplCopyWith<T, $Res> {
+  __$$BaseErrorImplCopyWithImpl(
+      _$BaseErrorImpl<T> _value, $Res Function(_$BaseErrorImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -336,7 +336,7 @@ class __$$BaseErrorCopyWithImpl<T, $Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$BaseError<T>(
+    return _then(_$BaseErrorImpl<T>(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -347,8 +347,8 @@ class __$$BaseErrorCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$BaseError<T> implements BaseError<T> {
-  const _$BaseError(this.failure);
+class _$BaseErrorImpl<T> implements BaseError<T> {
+  const _$BaseErrorImpl(this.failure);
 
   @override
   final String failure;
@@ -362,7 +362,7 @@ class _$BaseError<T> implements BaseError<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BaseError<T> &&
+            other is _$BaseErrorImpl<T> &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -372,8 +372,8 @@ class _$BaseError<T> implements BaseError<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BaseErrorCopyWith<T, _$BaseError<T>> get copyWith =>
-      __$$BaseErrorCopyWithImpl<T, _$BaseError<T>>(this, _$identity);
+  _$$BaseErrorImplCopyWith<T, _$BaseErrorImpl<T>> get copyWith =>
+      __$$BaseErrorImplCopyWithImpl<T, _$BaseErrorImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -451,29 +451,29 @@ class _$BaseError<T> implements BaseError<T> {
 }
 
 abstract class BaseError<T> implements BaseState<T> {
-  const factory BaseError(final String failure) = _$BaseError<T>;
+  const factory BaseError(final String failure) = _$BaseErrorImpl<T>;
 
   String get failure;
   @JsonKey(ignore: true)
-  _$$BaseErrorCopyWith<T, _$BaseError<T>> get copyWith =>
+  _$$BaseErrorImplCopyWith<T, _$BaseErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BaseSuccessCopyWith<T, $Res> {
-  factory _$$BaseSuccessCopyWith(
-          _$BaseSuccess<T> value, $Res Function(_$BaseSuccess<T>) then) =
-      __$$BaseSuccessCopyWithImpl<T, $Res>;
+abstract class _$$BaseSuccessImplCopyWith<T, $Res> {
+  factory _$$BaseSuccessImplCopyWith(_$BaseSuccessImpl<T> value,
+          $Res Function(_$BaseSuccessImpl<T>) then) =
+      __$$BaseSuccessImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T? data});
 }
 
 /// @nodoc
-class __$$BaseSuccessCopyWithImpl<T, $Res>
-    extends _$BaseStateCopyWithImpl<T, $Res, _$BaseSuccess<T>>
-    implements _$$BaseSuccessCopyWith<T, $Res> {
-  __$$BaseSuccessCopyWithImpl(
-      _$BaseSuccess<T> _value, $Res Function(_$BaseSuccess<T>) _then)
+class __$$BaseSuccessImplCopyWithImpl<T, $Res>
+    extends _$BaseStateCopyWithImpl<T, $Res, _$BaseSuccessImpl<T>>
+    implements _$$BaseSuccessImplCopyWith<T, $Res> {
+  __$$BaseSuccessImplCopyWithImpl(
+      _$BaseSuccessImpl<T> _value, $Res Function(_$BaseSuccessImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -481,7 +481,7 @@ class __$$BaseSuccessCopyWithImpl<T, $Res>
   $Res call({
     Object? data = freezed,
   }) {
-    return _then(_$BaseSuccess<T>(
+    return _then(_$BaseSuccessImpl<T>(
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -492,8 +492,8 @@ class __$$BaseSuccessCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$BaseSuccess<T> implements BaseSuccess<T> {
-  const _$BaseSuccess({this.data});
+class _$BaseSuccessImpl<T> implements BaseSuccess<T> {
+  const _$BaseSuccessImpl({this.data});
 
   @override
   final T? data;
@@ -507,7 +507,7 @@ class _$BaseSuccess<T> implements BaseSuccess<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BaseSuccess<T> &&
+            other is _$BaseSuccessImpl<T> &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -518,8 +518,9 @@ class _$BaseSuccess<T> implements BaseSuccess<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BaseSuccessCopyWith<T, _$BaseSuccess<T>> get copyWith =>
-      __$$BaseSuccessCopyWithImpl<T, _$BaseSuccess<T>>(this, _$identity);
+  _$$BaseSuccessImplCopyWith<T, _$BaseSuccessImpl<T>> get copyWith =>
+      __$$BaseSuccessImplCopyWithImpl<T, _$BaseSuccessImpl<T>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -597,10 +598,10 @@ class _$BaseSuccess<T> implements BaseSuccess<T> {
 }
 
 abstract class BaseSuccess<T> implements BaseState<T> {
-  const factory BaseSuccess({final T? data}) = _$BaseSuccess<T>;
+  const factory BaseSuccess({final T? data}) = _$BaseSuccessImpl<T>;
 
   T? get data;
   @JsonKey(ignore: true)
-  _$$BaseSuccessCopyWith<T, _$BaseSuccess<T>> get copyWith =>
+  _$$BaseSuccessImplCopyWith<T, _$BaseSuccessImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

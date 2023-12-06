@@ -425,9 +425,10 @@ class _$MealCopyWithImpl<$Res, $Val extends Meal>
 }
 
 /// @nodoc
-abstract class _$$_MealCopyWith<$Res> implements $MealCopyWith<$Res> {
-  factory _$$_MealCopyWith(_$_Meal value, $Res Function(_$_Meal) then) =
-      __$$_MealCopyWithImpl<$Res>;
+abstract class _$$MealImplCopyWith<$Res> implements $MealCopyWith<$Res> {
+  factory _$$MealImplCopyWith(
+          _$MealImpl value, $Res Function(_$MealImpl) then) =
+      __$$MealImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -487,9 +488,10 @@ abstract class _$$_MealCopyWith<$Res> implements $MealCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MealCopyWithImpl<$Res> extends _$MealCopyWithImpl<$Res, _$_Meal>
-    implements _$$_MealCopyWith<$Res> {
-  __$$_MealCopyWithImpl(_$_Meal _value, $Res Function(_$_Meal) _then)
+class __$$MealImplCopyWithImpl<$Res>
+    extends _$MealCopyWithImpl<$Res, _$MealImpl>
+    implements _$$MealImplCopyWith<$Res> {
+  __$$MealImplCopyWithImpl(_$MealImpl _value, $Res Function(_$MealImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -549,7 +551,7 @@ class __$$_MealCopyWithImpl<$Res> extends _$MealCopyWithImpl<$Res, _$_Meal>
     Object? strCreativeCommonsConfirmed = freezed,
     Object? dateModified = freezed,
   }) {
-    return _then(_$_Meal(
+    return _then(_$MealImpl(
       idMeal: null == idMeal
           ? _value.idMeal
           : idMeal // ignore: cast_nullable_to_non_nullable
@@ -768,8 +770,8 @@ class __$$_MealCopyWithImpl<$Res> extends _$MealCopyWithImpl<$Res, _$_Meal>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Meal implements _Meal {
-  const _$_Meal(
+class _$MealImpl implements _Meal {
+  const _$MealImpl(
       {required this.idMeal,
       required this.strMeal,
       this.strDrinkAlternate,
@@ -824,7 +826,8 @@ class _$_Meal implements _Meal {
       this.strCreativeCommonsConfirmed,
       this.dateModified});
 
-  factory _$_Meal.fromJson(Map<String, dynamic> json) => _$$_MealFromJson(json);
+  factory _$MealImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MealImplFromJson(json);
 
   @override
   final String idMeal;
@@ -942,7 +945,7 @@ class _$_Meal implements _Meal {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Meal &&
+            other is _$MealImpl &&
             (identical(other.idMeal, idMeal) || other.idMeal == idMeal) &&
             (identical(other.strMeal, strMeal) || other.strMeal == strMeal) &&
             (identical(other.strDrinkAlternate, strDrinkAlternate) ||
@@ -1103,12 +1106,12 @@ class _$_Meal implements _Meal {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MealCopyWith<_$_Meal> get copyWith =>
-      __$$_MealCopyWithImpl<_$_Meal>(this, _$identity);
+  _$$MealImplCopyWith<_$MealImpl> get copyWith =>
+      __$$MealImplCopyWithImpl<_$MealImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MealToJson(
+    return _$$MealImplToJson(
       this,
     );
   }
@@ -1168,9 +1171,9 @@ abstract class _Meal implements Meal {
       final String? strSource,
       final String? strImageSource,
       final String? strCreativeCommonsConfirmed,
-      final String? dateModified}) = _$_Meal;
+      final String? dateModified}) = _$MealImpl;
 
-  factory _Meal.fromJson(Map<String, dynamic> json) = _$_Meal.fromJson;
+  factory _Meal.fromJson(Map<String, dynamic> json) = _$MealImpl.fromJson;
 
   @override
   String get idMeal;
@@ -1280,5 +1283,6 @@ abstract class _Meal implements Meal {
   String? get dateModified;
   @override
   @JsonKey(ignore: true)
-  _$$_MealCopyWith<_$_Meal> get copyWith => throw _privateConstructorUsedError;
+  _$$MealImplCopyWith<_$MealImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

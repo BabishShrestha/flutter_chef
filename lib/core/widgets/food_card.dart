@@ -12,7 +12,7 @@ class FoodCard extends StatelessWidget {
   final void Function()? onTap;
 
   const FoodCard({
-    Key? key,
+    super.key,
     required this.title,
     this.ingredient,
     required this.image,
@@ -21,7 +21,7 @@ class FoodCard extends StatelessWidget {
     this.onTap,
     required this.height,
     required this.width,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -113,9 +113,10 @@ class BuildProfile extends StatelessWidget {
           children: <Widget>[
             Align(
               widthFactor: 3,
-              child: Text(" $text :",
-                  style:
-                      kProfileTitlestyle.copyWith(fontWeight: FontWeight.bold)),
+              child: Text(
+                ' $text:',
+                style: kProfileTitlestyle.copyWith(fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(
               width: 10,

@@ -94,9 +94,10 @@ class _DetailCardState extends ConsumerState<RecipeDetailView> {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             DetailBodyWidget(
+              description: widget.mealFeedDetails.content?.description?.text,
               instructions: widget.mealFeedDetails.content!.preparationSteps,
               nutritionDetail: 'widget.recipe.nutrition',
               mealServingInfo: PreparationInfoWidget(

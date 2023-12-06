@@ -6,7 +6,8 @@ part of 'meal_yummly.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MealFeed _$$_MealFeedFromJson(Map<String, dynamic> json) => _$_MealFeed(
+_$MealFeedImpl _$$MealFeedImplFromJson(Map<String, dynamic> json) =>
+    _$MealFeedImpl(
       feed: (json['feed'] as List<dynamic>?)
           ?.map((e) => MealFeedFeed.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -15,14 +16,14 @@ _$_MealFeed _$$_MealFeedFromJson(Map<String, dynamic> json) => _$_MealFeed(
           : MealFeedSeo.fromJson(json['seo'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MealFeedToJson(_$_MealFeed instance) =>
+Map<String, dynamic> _$$MealFeedImplToJson(_$MealFeedImpl instance) =>
     <String, dynamic>{
       'feed': instance.feed,
       'seo': instance.seo,
     };
 
-_$_MealFeedFeed _$$_MealFeedFeedFromJson(Map<String, dynamic> json) =>
-    _$_MealFeedFeed(
+_$MealFeedFeedImpl _$$MealFeedFeedImplFromJson(Map<String, dynamic> json) =>
+    _$MealFeedFeedImpl(
       display: json['display'] == null
           ? null
           : StickyDisplay.fromJson(json['display'] as Map<String, dynamic>),
@@ -32,7 +33,7 @@ _$_MealFeedFeed _$$_MealFeedFeedFromJson(Map<String, dynamic> json) =>
       recipeType: (json['recipeType'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      trackingId: json['trackingId'] as String?,
+      trackingId: json['tracking-id'] as String?,
       seo: json['seo'] == null
           ? null
           : FeedSeo.fromJson(json['seo'] as Map<String, dynamic>),
@@ -41,20 +42,20 @@ _$_MealFeedFeed _$$_MealFeedFeedFromJson(Map<String, dynamic> json) =>
           : PurpleContent.fromJson(json['content'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MealFeedFeedToJson(_$_MealFeedFeed instance) =>
+Map<String, dynamic> _$$MealFeedFeedImplToJson(_$MealFeedFeedImpl instance) =>
     <String, dynamic>{
       'display': instance.display,
       'type': instance.type,
       'promoted': instance.promoted,
       'proRecipe': instance.proRecipe,
       'recipeType': instance.recipeType,
-      'trackingId': instance.trackingId,
+      'tracking-id': instance.trackingId,
       'seo': instance.seo,
       'content': instance.content,
     };
 
-_$_PurpleContent _$$_PurpleContentFromJson(Map<String, dynamic> json) =>
-    _$_PurpleContent(
+_$PurpleContentImpl _$$PurpleContentImplFromJson(Map<String, dynamic> json) =>
+    _$PurpleContentImpl(
       description: json['description'] == null
           ? null
           : Description.fromJson(json['description'] as Map<String, dynamic>),
@@ -112,7 +113,7 @@ _$_PurpleContent _$$_PurpleContentFromJson(Map<String, dynamic> json) =>
           : FluffyVideos.fromJson(json['videos'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PurpleContentToJson(_$_PurpleContent instance) =>
+Map<String, dynamic> _$$PurpleContentImplToJson(_$PurpleContentImpl instance) =>
     <String, dynamic>{
       'description': instance.description,
       'urbSubmitters': instance.urbSubmitters,
@@ -140,24 +141,25 @@ Map<String, dynamic> _$$_PurpleContentToJson(_$_PurpleContent instance) =>
       'videos': instance.videos,
     };
 
-_$_Description _$$_DescriptionFromJson(Map<String, dynamic> json) =>
-    _$_Description(
+_$DescriptionImpl _$$DescriptionImplFromJson(Map<String, dynamic> json) =>
+    _$DescriptionImpl(
       mobileSectionName: json['mobileSectionName'] as String?,
       text: json['text'] as String?,
       shortText: json['shortText'],
     );
 
-Map<String, dynamic> _$$_DescriptionToJson(_$_Description instance) =>
+Map<String, dynamic> _$$DescriptionImplToJson(_$DescriptionImpl instance) =>
     <String, dynamic>{
       'mobileSectionName': instance.mobileSectionName,
       'text': instance.text,
       'shortText': instance.shortText,
     };
 
-_$_Details _$$_DetailsFromJson(Map<String, dynamic> json) => _$_Details(
+_$DetailsImpl _$$DetailsImplFromJson(Map<String, dynamic> json) =>
+    _$DetailsImpl(
       directionsUrl: json['directionsUrl'] as String?,
       totalTime: json['totalTime'] as String?,
-      displayName: json['displayName'] as String?,
+      displayName: json['display-name'] as String?,
       images: (json['images'] as List<dynamic>?)
           ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -178,11 +180,11 @@ _$_Details _$$_DetailsFromJson(Map<String, dynamic> json) => _$_Details(
       title: json['title'] as String?,
     );
 
-Map<String, dynamic> _$$_DetailsToJson(_$_Details instance) =>
+Map<String, dynamic> _$$DetailsImplToJson(_$DetailsImpl instance) =>
     <String, dynamic>{
       'directionsUrl': instance.directionsUrl,
       'totalTime': instance.totalTime,
-      'displayName': instance.displayName,
+      'display-name': instance.displayName,
       'images': instance.images,
       'name': instance.name,
       'keywords': instance.keywords,
@@ -197,15 +199,15 @@ Map<String, dynamic> _$$_DetailsToJson(_$_Details instance) =>
       'title': instance.title,
     };
 
-_$_Attribution _$$_AttributionFromJson(Map<String, dynamic> json) =>
-    _$_Attribution(
+_$AttributionImpl _$$AttributionImplFromJson(Map<String, dynamic> json) =>
+    _$AttributionImpl(
       html: json['html'] as String?,
       url: json['url'] as String?,
       text: json['text'] as String?,
       logo: json['logo'] as String?,
     );
 
-Map<String, dynamic> _$$_AttributionToJson(_$_Attribution instance) =>
+Map<String, dynamic> _$$AttributionImplToJson(_$AttributionImpl instance) =>
     <String, dynamic>{
       'html': instance.html,
       'url': instance.url,
@@ -213,23 +215,24 @@ Map<String, dynamic> _$$_AttributionToJson(_$_Attribution instance) =>
       'logo': instance.logo,
     };
 
-_$_Image _$$_ImageFromJson(Map<String, dynamic> json) => _$_Image(
+_$ImageImpl _$$ImageImplFromJson(Map<String, dynamic> json) => _$ImageImpl(
       hostedLargeUrl: json['hostedLargeUrl'] as String?,
       resizableImageUrl: json['resizableImageUrl'] as String?,
       resizableImageHeight: json['resizableImageHeight'] as int?,
       resizableImageWidth: json['resizableImageWidth'] as int?,
     );
 
-Map<String, dynamic> _$$_ImageToJson(_$_Image instance) => <String, dynamic>{
+Map<String, dynamic> _$$ImageImplToJson(_$ImageImpl instance) =>
+    <String, dynamic>{
       'hostedLargeUrl': instance.hostedLargeUrl,
       'resizableImageUrl': instance.resizableImageUrl,
       'resizableImageHeight': instance.resizableImageHeight,
       'resizableImageWidth': instance.resizableImageWidth,
     };
 
-_$_ContentIngredientLine _$$_ContentIngredientLineFromJson(
+_$ContentIngredientLineImpl _$$ContentIngredientLineImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ContentIngredientLine(
+    _$ContentIngredientLineImpl(
       category: json['category'] as String?,
       amount: json['amount'] == null
           ? null
@@ -249,8 +252,8 @@ _$_ContentIngredientLine _$$_ContentIngredientLineFromJson(
       wholeLine: json['wholeLine'] as String?,
     );
 
-Map<String, dynamic> _$$_ContentIngredientLineToJson(
-        _$_ContentIngredientLine instance) =>
+Map<String, dynamic> _$$ContentIngredientLineImplToJson(
+        _$ContentIngredientLineImpl instance) =>
     <String, dynamic>{
       'category': instance.category,
       'amount': instance.amount,
@@ -265,7 +268,7 @@ Map<String, dynamic> _$$_ContentIngredientLineToJson(
       'wholeLine': instance.wholeLine,
     };
 
-_$_Amount _$$_AmountFromJson(Map<String, dynamic> json) => _$_Amount(
+_$AmountImpl _$$AmountImplFromJson(Map<String, dynamic> json) => _$AmountImpl(
       metric: json['metric'] == null
           ? null
           : Imperial.fromJson(json['metric'] as Map<String, dynamic>),
@@ -274,26 +277,28 @@ _$_Amount _$$_AmountFromJson(Map<String, dynamic> json) => _$_Amount(
           : Imperial.fromJson(json['imperial'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_AmountToJson(_$_Amount instance) => <String, dynamic>{
+Map<String, dynamic> _$$AmountImplToJson(_$AmountImpl instance) =>
+    <String, dynamic>{
       'metric': instance.metric,
       'imperial': instance.imperial,
     };
 
-_$_Imperial _$$_ImperialFromJson(Map<String, dynamic> json) => _$_Imperial(
+_$ImperialImpl _$$ImperialImplFromJson(Map<String, dynamic> json) =>
+    _$ImperialImpl(
       unit: json['unit'] == null
           ? null
           : ImperialUnit.fromJson(json['unit'] as Map<String, dynamic>),
       quantity: (json['quantity'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_ImperialToJson(_$_Imperial instance) =>
+Map<String, dynamic> _$$ImperialImplToJson(_$ImperialImpl instance) =>
     <String, dynamic>{
       'unit': instance.unit,
       'quantity': instance.quantity,
     };
 
-_$_ImperialUnit _$$_ImperialUnitFromJson(Map<String, dynamic> json) =>
-    _$_ImperialUnit(
+_$ImperialUnitImpl _$$ImperialUnitImplFromJson(Map<String, dynamic> json) =>
+    _$ImperialUnitImpl(
       id: json['id'] as String?,
       name: json['name'] as String?,
       abbreviation: json['abbreviation'] as String?,
@@ -304,7 +309,7 @@ _$_ImperialUnit _$$_ImperialUnitFromJson(Map<String, dynamic> json) =>
       round: json['round'] as bool?,
     );
 
-Map<String, dynamic> _$$_ImperialUnitToJson(_$_ImperialUnit instance) =>
+Map<String, dynamic> _$$ImperialUnitImplToJson(_$ImperialUnitImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -316,19 +321,20 @@ Map<String, dynamic> _$$_ImperialUnitToJson(_$_ImperialUnit instance) =>
       'round': instance.round,
     };
 
-_$_RelatedRecipeSearchTerm _$$_RelatedRecipeSearchTermFromJson(
+_$RelatedRecipeSearchTermImpl _$$RelatedRecipeSearchTermImplFromJson(
         Map<String, dynamic> json) =>
-    _$_RelatedRecipeSearchTerm(
+    _$RelatedRecipeSearchTermImpl(
       allowedIngredient: json['allowedIngredient'] as String?,
     );
 
-Map<String, dynamic> _$$_RelatedRecipeSearchTermToJson(
-        _$_RelatedRecipeSearchTerm instance) =>
+Map<String, dynamic> _$$RelatedRecipeSearchTermImplToJson(
+        _$RelatedRecipeSearchTermImpl instance) =>
     <String, dynamic>{
       'allowedIngredient': instance.allowedIngredient,
     };
 
-_$_Matches _$$_MatchesFromJson(Map<String, dynamic> json) => _$_Matches(
+_$MatchesImpl _$$MatchesImplFromJson(Map<String, dynamic> json) =>
+    _$MatchesImpl(
       seo: json['seo'] == null
           ? null
           : MatchesSeo.fromJson(json['seo'] as Map<String, dynamic>),
@@ -359,7 +365,7 @@ _$_Matches _$$_MatchesFromJson(Map<String, dynamic> json) => _$_Matches(
       relatedSearchResults: json['relatedSearchResults'],
     );
 
-Map<String, dynamic> _$$_MatchesToJson(_$_Matches instance) =>
+Map<String, dynamic> _$$MatchesImplToJson(_$MatchesImpl instance) =>
     <String, dynamic>{
       'seo': instance.seo,
       'feed': instance.feed,
@@ -377,7 +383,8 @@ Map<String, dynamic> _$$_MatchesToJson(_$_Matches instance) =>
       'relatedSearchResults': instance.relatedSearchResults,
     };
 
-_$_Criteria _$$_CriteriaFromJson(Map<String, dynamic> json) => _$_Criteria(
+_$CriteriaImpl _$$CriteriaImplFromJson(Map<String, dynamic> json) =>
+    _$CriteriaImpl(
       q: json['q'] as String?,
       boostLocales: (json['boostLocales'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -422,7 +429,7 @@ _$_Criteria _$$_CriteriaFromJson(Map<String, dynamic> json) => _$_Criteria(
       reviewImagesPerRecipe: json['reviewImagesPerRecipe'],
     );
 
-Map<String, dynamic> _$$_CriteriaToJson(_$_Criteria instance) =>
+Map<String, dynamic> _$$CriteriaImplToJson(_$CriteriaImpl instance) =>
     <String, dynamic>{
       'q': instance.q,
       'boostLocales': instance.boostLocales,
@@ -454,20 +461,20 @@ Map<String, dynamic> _$$_CriteriaToJson(_$_Criteria instance) =>
       'reviewImagesPerRecipe': instance.reviewImagesPerRecipe,
     };
 
-_$_IngredientMatchCount _$$_IngredientMatchCountFromJson(
+_$IngredientMatchCountImpl _$$IngredientMatchCountImplFromJson(
         Map<String, dynamic> json) =>
-    _$_IngredientMatchCount();
+    _$IngredientMatchCountImpl();
 
-Map<String, dynamic> _$$_IngredientMatchCountToJson(
-        _$_IngredientMatchCount instance) =>
+Map<String, dynamic> _$$IngredientMatchCountImplToJson(
+        _$IngredientMatchCountImpl instance) =>
     <String, dynamic>{};
 
-_$_MatchesFeed _$$_MatchesFeedFromJson(Map<String, dynamic> json) =>
-    _$_MatchesFeed(
+_$MatchesFeedImpl _$$MatchesFeedImplFromJson(Map<String, dynamic> json) =>
+    _$MatchesFeedImpl(
       seo: json['seo'] == null
           ? null
           : FeedSeo.fromJson(json['seo'] as Map<String, dynamic>),
-      trackingId: json['trackingId'] as String?,
+      trackingId: json['tracking-id'] as String?,
       content: json['content'] == null
           ? null
           : FluffyContent.fromJson(json['content'] as Map<String, dynamic>),
@@ -485,10 +492,10 @@ _$_MatchesFeed _$$_MatchesFeedFromJson(Map<String, dynamic> json) =>
           : SearchResult.fromJson(json['searchResult'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MatchesFeedToJson(_$_MatchesFeed instance) =>
+Map<String, dynamic> _$$MatchesFeedImplToJson(_$MatchesFeedImpl instance) =>
     <String, dynamic>{
       'seo': instance.seo,
-      'trackingId': instance.trackingId,
+      'tracking-id': instance.trackingId,
       'content': instance.content,
       'type': instance.type,
       'recipeType': instance.recipeType,
@@ -498,8 +505,8 @@ Map<String, dynamic> _$$_MatchesFeedToJson(_$_MatchesFeed instance) =>
       'searchResult': instance.searchResult,
     };
 
-_$_FluffyContent _$$_FluffyContentFromJson(Map<String, dynamic> json) =>
-    _$_FluffyContent(
+_$FluffyContentImpl _$$FluffyContentImplFromJson(Map<String, dynamic> json) =>
+    _$FluffyContentImpl(
       description: json['description'] == null
           ? null
           : Description.fromJson(json['description'] as Map<String, dynamic>),
@@ -550,7 +557,7 @@ _$_FluffyContent _$$_FluffyContentFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_FluffyContentToJson(_$_FluffyContent instance) =>
+Map<String, dynamic> _$$FluffyContentImplToJson(_$FluffyContentImpl instance) =>
     <String, dynamic>{
       'description': instance.description,
       'urbSubmitters': instance.urbSubmitters,
@@ -571,8 +578,9 @@ Map<String, dynamic> _$$_FluffyContentToJson(_$_FluffyContent instance) =>
       'guidedVariations': instance.guidedVariations,
     };
 
-_$_GuidedVariation _$$_GuidedVariationFromJson(Map<String, dynamic> json) =>
-    _$_GuidedVariation(
+_$GuidedVariationImpl _$$GuidedVariationImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GuidedVariationImpl(
       id: json['id'] as String?,
       guidedVariationDefault: json['guidedVariationDefault'] as bool?,
       variationAttributes: json['variationAttributes'] as List<dynamic>?,
@@ -583,7 +591,8 @@ _$_GuidedVariation _$$_GuidedVariationFromJson(Map<String, dynamic> json) =>
       applianceUnitTypeCode: json['applianceUnitTypeCode'] as String?,
     );
 
-Map<String, dynamic> _$$_GuidedVariationToJson(_$_GuidedVariation instance) =>
+Map<String, dynamic> _$$GuidedVariationImplToJson(
+        _$GuidedVariationImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'guidedVariationDefault': instance.guidedVariationDefault,
@@ -593,35 +602,37 @@ Map<String, dynamic> _$$_GuidedVariationToJson(_$_GuidedVariation instance) =>
       'applianceUnitTypeCode': instance.applianceUnitTypeCode,
     };
 
-_$_Action _$$_ActionFromJson(Map<String, dynamic> json) => _$_Action(
+_$ActionImpl _$$ActionImplFromJson(Map<String, dynamic> json) => _$ActionImpl(
       name: json['name'] as String?,
       stepGroups: (json['stepGroups'] as List<dynamic>?)
           ?.map((e) => StepGroup.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_ActionToJson(_$_Action instance) => <String, dynamic>{
+Map<String, dynamic> _$$ActionImplToJson(_$ActionImpl instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'stepGroups': instance.stepGroups,
     };
 
-_$_StepGroup _$$_StepGroupFromJson(Map<String, dynamic> json) => _$_StepGroup(
+_$StepGroupImpl _$$StepGroupImplFromJson(Map<String, dynamic> json) =>
+    _$StepGroupImpl(
       steps: (json['steps'] as List<dynamic>?)
           ?.map((e) => Step.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_StepGroupToJson(_$_StepGroup instance) =>
+Map<String, dynamic> _$$StepGroupImplToJson(_$StepGroupImpl instance) =>
     <String, dynamic>{
       'steps': instance.steps,
     };
 
-_$_Step _$$_StepFromJson(Map<String, dynamic> json) => _$_Step(
+_$StepImpl _$$StepImplFromJson(Map<String, dynamic> json) => _$StepImpl(
       displayText: json['displayText'] as String?,
       ingredientLines: (json['ingredientLines'] as List<dynamic>?)
           ?.map((e) => StepIngredientLine.fromJson(e as Map<String, dynamic>))
           .toList(),
-      imageUrl: json['imageUrl'] as String?,
+      imageUrl: json['image-url'] as String?,
       equipment: (json['equipment'] as List<dynamic>?)
           ?.map((e) => Equipment.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -637,10 +648,11 @@ _$_Step _$$_StepFromJson(Map<String, dynamic> json) => _$_Step(
           .toList(),
     );
 
-Map<String, dynamic> _$$_StepToJson(_$_Step instance) => <String, dynamic>{
+Map<String, dynamic> _$$StepImplToJson(_$StepImpl instance) =>
+    <String, dynamic>{
       'displayText': instance.displayText,
       'ingredientLines': instance.ingredientLines,
-      'imageUrl': instance.imageUrl,
+      'image-url': instance.imageUrl,
       'equipment': instance.equipment,
       'video': instance.video,
       'timers': instance.timers,
@@ -648,20 +660,21 @@ Map<String, dynamic> _$$_StepToJson(_$_Step instance) => <String, dynamic>{
       'prerequisiteEvents': instance.prerequisiteEvents,
     };
 
-_$_Equipment _$$_EquipmentFromJson(Map<String, dynamic> json) => _$_Equipment(
+_$EquipmentImpl _$$EquipmentImplFromJson(Map<String, dynamic> json) =>
+    _$EquipmentImpl(
       id: json['id'] as String?,
       name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$$_EquipmentToJson(_$_Equipment instance) =>
+Map<String, dynamic> _$$EquipmentImplToJson(_$EquipmentImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
     };
 
-_$_StepIngredientLine _$$_StepIngredientLineFromJson(
+_$StepIngredientLineImpl _$$StepIngredientLineImplFromJson(
         Map<String, dynamic> json) =>
-    _$_StepIngredientLine(
+    _$StepIngredientLineImpl(
       ingredient: json['ingredient'] as String?,
       ingredientId: json['ingredientId'] as String?,
       sortOrder: json['sortOrder'] as int?,
@@ -672,8 +685,8 @@ _$_StepIngredientLine _$$_StepIngredientLineFromJson(
       remainder: json['remainder'] as String?,
     );
 
-Map<String, dynamic> _$$_StepIngredientLineToJson(
-        _$_StepIngredientLine instance) =>
+Map<String, dynamic> _$$StepIngredientLineImplToJson(
+        _$StepIngredientLineImpl instance) =>
     <String, dynamic>{
       'ingredient': instance.ingredient,
       'ingredientId': instance.ingredientId,
@@ -683,16 +696,17 @@ Map<String, dynamic> _$$_StepIngredientLineToJson(
       'remainder': instance.remainder,
     };
 
-_$_PrerequisiteEvent _$$_PrerequisiteEventFromJson(Map<String, dynamic> json) =>
-    _$_PrerequisiteEvent(
+_$PrerequisiteEventImpl _$$PrerequisiteEventImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PrerequisiteEventImpl(
       priority: json['priority'] as String?,
       message: json['message'] as String?,
       mappingNotificationId: json['mappingNotificationId'] as String?,
       type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_PrerequisiteEventToJson(
-        _$_PrerequisiteEvent instance) =>
+Map<String, dynamic> _$$PrerequisiteEventImplToJson(
+        _$PrerequisiteEventImpl instance) =>
     <String, dynamic>{
       'priority': instance.priority,
       'message': instance.message,
@@ -700,7 +714,7 @@ Map<String, dynamic> _$$_PrerequisiteEventToJson(
       'type': instance.type,
     };
 
-_$_Timer _$$_TimerFromJson(Map<String, dynamic> json) => _$_Timer(
+_$TimerImpl _$$TimerImplFromJson(Map<String, dynamic> json) => _$TimerImpl(
       id: json['id'] as String?,
       timerName: json['timerName'] as String?,
       repeatable: json['repeatable'] as bool?,
@@ -711,7 +725,8 @@ _$_Timer _$$_TimerFromJson(Map<String, dynamic> json) => _$_Timer(
       finishMessage: json['finishMessage'] as String?,
     );
 
-Map<String, dynamic> _$$_TimerToJson(_$_Timer instance) => <String, dynamic>{
+Map<String, dynamic> _$$TimerImplToJson(_$TimerImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'timerName': instance.timerName,
       'repeatable': instance.repeatable,
@@ -722,7 +737,7 @@ Map<String, dynamic> _$$_TimerToJson(_$_Timer instance) => <String, dynamic>{
       'finishMessage': instance.finishMessage,
     };
 
-_$_Video _$$_VideoFromJson(Map<String, dynamic> json) => _$_Video(
+_$VideoImpl _$$VideoImplFromJson(Map<String, dynamic> json) => _$VideoImpl(
       snapshotUrl: json['snapshotUrl'] as String?,
       videoUrls: json['videoUrls'] == null
           ? null
@@ -735,7 +750,8 @@ _$_Video _$$_VideoFromJson(Map<String, dynamic> json) => _$_Video(
           : DateTime.parse(json['createTime'] as String),
     );
 
-Map<String, dynamic> _$$_VideoToJson(_$_Video instance) => <String, dynamic>{
+Map<String, dynamic> _$$VideoImplToJson(_$VideoImpl instance) =>
+    <String, dynamic>{
       'snapshotUrl': instance.snapshotUrl,
       'videoUrls': instance.videoUrls,
       'videoTypeCode': instance.videoTypeCode,
@@ -744,19 +760,20 @@ Map<String, dynamic> _$$_VideoToJson(_$_Video instance) => <String, dynamic>{
       'createTime': instance.createTime?.toIso8601String(),
     };
 
-_$_VideoUrls _$$_VideoUrlsFromJson(Map<String, dynamic> json) => _$_VideoUrls(
+_$VideoUrlsImpl _$$VideoUrlsImplFromJson(Map<String, dynamic> json) =>
+    _$VideoUrlsImpl(
       android: json['android'] as String?,
       ios: json['ios'] as String?,
     );
 
-Map<String, dynamic> _$$_VideoUrlsToJson(_$_VideoUrls instance) =>
+Map<String, dynamic> _$$VideoUrlsImplToJson(_$VideoUrlsImpl instance) =>
     <String, dynamic>{
       'android': instance.android,
       'ios': instance.ios,
     };
 
-_$_MoreContent _$$_MoreContentFromJson(Map<String, dynamic> json) =>
-    _$_MoreContent(
+_$MoreContentImpl _$$MoreContentImplFromJson(Map<String, dynamic> json) =>
+    _$MoreContentImpl(
       mobileSectionName: json['mobileSectionName'] as String?,
       queryParams: json['queryParams'] == null
           ? null
@@ -764,15 +781,15 @@ _$_MoreContent _$$_MoreContentFromJson(Map<String, dynamic> json) =>
       feed: json['feed'] as List<dynamic>?,
     );
 
-Map<String, dynamic> _$$_MoreContentToJson(_$_MoreContent instance) =>
+Map<String, dynamic> _$$MoreContentImplToJson(_$MoreContentImpl instance) =>
     <String, dynamic>{
       'mobileSectionName': instance.mobileSectionName,
       'queryParams': instance.queryParams,
       'feed': instance.feed,
     };
 
-_$_QueryParams _$$_QueryParamsFromJson(Map<String, dynamic> json) =>
-    _$_QueryParams(
+_$QueryParamsImpl _$$QueryParamsImplFromJson(Map<String, dynamic> json) =>
+    _$QueryParamsImpl(
       start: json['start'] as int?,
       authorId: json['authorId'] as String?,
       id: json['id'] as String?,
@@ -780,7 +797,7 @@ _$_QueryParams _$$_QueryParamsFromJson(Map<String, dynamic> json) =>
       relatedContentType: json['relatedContentType'] as String?,
     );
 
-Map<String, dynamic> _$$_QueryParamsToJson(_$_QueryParams instance) =>
+Map<String, dynamic> _$$QueryParamsImplToJson(_$QueryParamsImpl instance) =>
     <String, dynamic>{
       'start': instance.start,
       'authorId': instance.authorId,
@@ -789,8 +806,9 @@ Map<String, dynamic> _$$_QueryParamsToJson(_$_QueryParams instance) =>
       'relatedContentType': instance.relatedContentType,
     };
 
-_$_PurpleNutrition _$$_PurpleNutritionFromJson(Map<String, dynamic> json) =>
-    _$_PurpleNutrition(
+_$PurpleNutritionImpl _$$PurpleNutritionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PurpleNutritionImpl(
       mobileSectionName: json['mobileSectionName'] as String?,
       nutritionEstimates: (json['nutritionEstimates'] as List<dynamic>?)
           ?.map((e) =>
@@ -798,15 +816,16 @@ _$_PurpleNutrition _$$_PurpleNutritionFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_PurpleNutritionToJson(_$_PurpleNutrition instance) =>
+Map<String, dynamic> _$$PurpleNutritionImplToJson(
+        _$PurpleNutritionImpl instance) =>
     <String, dynamic>{
       'mobileSectionName': instance.mobileSectionName,
       'nutritionEstimates': instance.nutritionEstimates,
     };
 
-_$_PurpleNutritionEstimate _$$_PurpleNutritionEstimateFromJson(
+_$PurpleNutritionEstimateImpl _$$PurpleNutritionEstimateImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PurpleNutritionEstimate(
+    _$PurpleNutritionEstimateImpl(
       attribute: json['attribute'] as String?,
       value: (json['value'] as num?)?.toDouble(),
       unit: json['unit'] == null
@@ -818,8 +837,8 @@ _$_PurpleNutritionEstimate _$$_PurpleNutritionEstimateFromJson(
           : PurpleDisplay.fromJson(json['display'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PurpleNutritionEstimateToJson(
-        _$_PurpleNutritionEstimate instance) =>
+Map<String, dynamic> _$$PurpleNutritionEstimateImplToJson(
+        _$PurpleNutritionEstimateImpl instance) =>
     <String, dynamic>{
       'attribute': instance.attribute,
       'value': instance.value,
@@ -827,31 +846,31 @@ Map<String, dynamic> _$$_PurpleNutritionEstimateToJson(
       'display': instance.display,
     };
 
-_$_PurpleDisplay _$$_PurpleDisplayFromJson(Map<String, dynamic> json) =>
-    _$_PurpleDisplay(
+_$PurpleDisplayImpl _$$PurpleDisplayImplFromJson(Map<String, dynamic> json) =>
+    _$PurpleDisplayImpl(
       value: json['value'],
       unit: json['unit'] as String?,
       percentDailyValue: (json['percentDailyValue'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_PurpleDisplayToJson(_$_PurpleDisplay instance) =>
+Map<String, dynamic> _$$PurpleDisplayImplToJson(_$PurpleDisplayImpl instance) =>
     <String, dynamic>{
       'value': instance.value,
       'unit': instance.unit,
       'percentDailyValue': instance.percentDailyValue,
     };
 
-_$_NutritionEstimateUnit _$$_NutritionEstimateUnitFromJson(
+_$NutritionEstimateUnitImpl _$$NutritionEstimateUnitImplFromJson(
         Map<String, dynamic> json) =>
-    _$_NutritionEstimateUnit(
+    _$NutritionEstimateUnitImpl(
       name: json['name'] as String?,
       abbreviation: json['abbreviation'] as String?,
       plural: json['plural'] as String?,
       decimal: json['decimal'] as bool?,
     );
 
-Map<String, dynamic> _$$_NutritionEstimateUnitToJson(
-        _$_NutritionEstimateUnit instance) =>
+Map<String, dynamic> _$$NutritionEstimateUnitImplToJson(
+        _$NutritionEstimateUnitImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'abbreviation': instance.abbreviation,
@@ -859,7 +878,8 @@ Map<String, dynamic> _$$_NutritionEstimateUnitToJson(
       'decimal': instance.decimal,
     };
 
-_$_Reviews _$$_ReviewsFromJson(Map<String, dynamic> json) => _$_Reviews(
+_$ReviewsImpl _$$ReviewsImplFromJson(Map<String, dynamic> json) =>
+    _$ReviewsImpl(
       mobileSectionName: json['mobileSectionName'] as String?,
       totalReviewCount: json['totalReviewCount'] as int?,
       averageRating: (json['averageRating'] as num?)?.toDouble(),
@@ -868,7 +888,7 @@ _$_Reviews _$$_ReviewsFromJson(Map<String, dynamic> json) => _$_Reviews(
       sortBy: json['sortBy'] as String?,
     );
 
-Map<String, dynamic> _$$_ReviewsToJson(_$_Reviews instance) =>
+Map<String, dynamic> _$$ReviewsImplToJson(_$ReviewsImpl instance) =>
     <String, dynamic>{
       'mobileSectionName': instance.mobileSectionName,
       'totalReviewCount': instance.totalReviewCount,
@@ -878,8 +898,8 @@ Map<String, dynamic> _$$_ReviewsToJson(_$_Reviews instance) =>
       'sortBy': instance.sortBy,
     };
 
-_$_PurpleTags _$$_PurpleTagsFromJson(Map<String, dynamic> json) =>
-    _$_PurpleTags(
+_$PurpleTagsImpl _$$PurpleTagsImplFromJson(Map<String, dynamic> json) =>
+    _$PurpleTagsImpl(
       course: (json['course'] as List<dynamic>?)
           ?.map((e) => AllergyPreference.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -903,7 +923,7 @@ _$_PurpleTags _$$_PurpleTagsFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_PurpleTagsToJson(_$_PurpleTags instance) =>
+Map<String, dynamic> _$$PurpleTagsImplToJson(_$PurpleTagsImpl instance) =>
     <String, dynamic>{
       'course': instance.course,
       'cuisine': instance.cuisine,
@@ -914,32 +934,34 @@ Map<String, dynamic> _$$_PurpleTagsToJson(_$_PurpleTags instance) =>
       'holiday': instance.holiday,
     };
 
-_$_AllergyPreference _$$_AllergyPreferenceFromJson(Map<String, dynamic> json) =>
-    _$_AllergyPreference(
-      displayName: json['displayName'] as String?,
-      tagUrl: json['tagUrl'] as String?,
+_$AllergyPreferenceImpl _$$AllergyPreferenceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AllergyPreferenceImpl(
+      displayName: json['display-name'] as String?,
+      tagUrl: json['tag-url'] as String?,
     );
 
-Map<String, dynamic> _$$_AllergyPreferenceToJson(
-        _$_AllergyPreference instance) =>
+Map<String, dynamic> _$$AllergyPreferenceImplToJson(
+        _$AllergyPreferenceImpl instance) =>
     <String, dynamic>{
-      'displayName': instance.displayName,
-      'tagUrl': instance.tagUrl,
+      'display-name': instance.displayName,
+      'tag-url': instance.tagUrl,
     };
 
-_$_TagsAds _$$_TagsAdsFromJson(Map<String, dynamic> json) => _$_TagsAds(
+_$TagsAdsImpl _$$TagsAdsImplFromJson(Map<String, dynamic> json) =>
+    _$TagsAdsImpl(
       adtag: (json['adtag'] as List<dynamic>?)
           ?.map((e) => AllergyPreference.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_TagsAdsToJson(_$_TagsAds instance) =>
+Map<String, dynamic> _$$TagsAdsImplToJson(_$TagsAdsImpl instance) =>
     <String, dynamic>{
       'adtag': instance.adtag,
     };
 
-_$_PurpleVideos _$$_PurpleVideosFromJson(Map<String, dynamic> json) =>
-    _$_PurpleVideos(
+_$PurpleVideosImpl _$$PurpleVideosImplFromJson(Map<String, dynamic> json) =>
+    _$PurpleVideosImpl(
       snapshotUrl: json['snapshotUrl'] as String?,
       videoUrls: json['videoUrls'] == null
           ? null
@@ -953,7 +975,7 @@ _$_PurpleVideos _$$_PurpleVideosFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['createTime'] as String),
     );
 
-Map<String, dynamic> _$$_PurpleVideosToJson(_$_PurpleVideos instance) =>
+Map<String, dynamic> _$$PurpleVideosImplToJson(_$PurpleVideosImpl instance) =>
     <String, dynamic>{
       'snapshotUrl': instance.snapshotUrl,
       'videoUrls': instance.videoUrls,
@@ -962,8 +984,8 @@ Map<String, dynamic> _$$_PurpleVideosToJson(_$_PurpleVideos instance) =>
       'createTime': instance.createTime?.toIso8601String(),
     };
 
-_$_VideoDetails _$$_VideoDetailsFromJson(Map<String, dynamic> json) =>
-    _$_VideoDetails(
+_$VideoDetailsImpl _$$VideoDetailsImplFromJson(Map<String, dynamic> json) =>
+    _$VideoDetailsImpl(
       android: (json['android'] as List<dynamic>?)
           ?.map((e) => Android.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -972,38 +994,40 @@ _$_VideoDetails _$$_VideoDetailsFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_VideoDetailsToJson(_$_VideoDetails instance) =>
+Map<String, dynamic> _$$VideoDetailsImplToJson(_$VideoDetailsImpl instance) =>
     <String, dynamic>{
       'android': instance.android,
       'ios': instance.ios,
     };
 
-_$_Android _$$_AndroidFromJson(Map<String, dynamic> json) => _$_Android(
+_$AndroidImpl _$$AndroidImplFromJson(Map<String, dynamic> json) =>
+    _$AndroidImpl(
       videoTypeCode: json['videoTypeCode'] as String?,
       videoUrl: json['videoUrl'] as String?,
       hasAudio: json['hasAudio'] as bool?,
     );
 
-Map<String, dynamic> _$$_AndroidToJson(_$_Android instance) =>
+Map<String, dynamic> _$$AndroidImplToJson(_$AndroidImpl instance) =>
     <String, dynamic>{
       'videoTypeCode': instance.videoTypeCode,
       'videoUrl': instance.videoUrl,
       'hasAudio': instance.hasAudio,
     };
 
-_$_Yums _$$_YumsFromJson(Map<String, dynamic> json) => _$_Yums(
+_$YumsImpl _$$YumsImplFromJson(Map<String, dynamic> json) => _$YumsImpl(
       count: json['count'] as int?,
       thisUser: json['thisUser'] as String?,
     );
 
-Map<String, dynamic> _$$_YumsToJson(_$_Yums instance) => <String, dynamic>{
+Map<String, dynamic> _$$YumsImplToJson(_$YumsImpl instance) =>
+    <String, dynamic>{
       'count': instance.count,
       'thisUser': instance.thisUser,
     };
 
-_$_FluffyDisplay _$$_FluffyDisplayFromJson(Map<String, dynamic> json) =>
-    _$_FluffyDisplay(
-      displayName: json['displayName'] as String?,
+_$FluffyDisplayImpl _$$FluffyDisplayImplFromJson(Map<String, dynamic> json) =>
+    _$FluffyDisplayImpl(
+      displayName: json['display-name'] as String?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       flag: json['flag'],
@@ -1017,9 +1041,9 @@ _$_FluffyDisplay _$$_FluffyDisplayFromJson(Map<String, dynamic> json) =>
       collections: json['collections'] as List<dynamic>?,
     );
 
-Map<String, dynamic> _$$_FluffyDisplayToJson(_$_FluffyDisplay instance) =>
+Map<String, dynamic> _$$FluffyDisplayImplToJson(_$FluffyDisplayImpl instance) =>
     <String, dynamic>{
-      'displayName': instance.displayName,
+      'display-name': instance.displayName,
       'images': instance.images,
       'flag': instance.flag,
       'source': instance.source,
@@ -1028,9 +1052,10 @@ Map<String, dynamic> _$$_FluffyDisplayToJson(_$_FluffyDisplay instance) =>
       'collections': instance.collections,
     };
 
-_$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
+_$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
+    _$ProfileImpl(
       profileName: json['profileName'] as String?,
-      displayName: json['displayName'] as String?,
+      displayName: json['display-name'] as String?,
       siteUrl: json['siteUrl'] as String?,
       pictureUrl: json['pictureUrl'] as String?,
       pageUrl: json['pageUrl'] as String?,
@@ -1039,10 +1064,10 @@ _$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
       profileUrl: json['profileUrl'] as String?,
     );
 
-Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) =>
+Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
     <String, dynamic>{
       'profileName': instance.profileName,
-      'displayName': instance.displayName,
+      'display-name': instance.displayName,
       'siteUrl': instance.siteUrl,
       'pictureUrl': instance.pictureUrl,
       'pageUrl': instance.pageUrl,
@@ -1051,8 +1076,8 @@ Map<String, dynamic> _$$_ProfileToJson(_$_Profile instance) =>
       'profileUrl': instance.profileUrl,
     };
 
-_$_PurpleSource _$$_PurpleSourceFromJson(Map<String, dynamic> json) =>
-    _$_PurpleSource(
+_$PurpleSourceImpl _$$PurpleSourceImplFromJson(Map<String, dynamic> json) =>
+    _$PurpleSourceImpl(
       sourceRecipeUrl: json['sourceRecipeUrl'] as String?,
       sourceFaviconUrl: json['sourceFaviconUrl'],
       sourceHttpsOk: json['sourceHttpsOk'] as bool?,
@@ -1070,7 +1095,7 @@ _$_PurpleSource _$$_PurpleSourceFromJson(Map<String, dynamic> json) =>
       marketingImage: json['marketingImage'],
     );
 
-Map<String, dynamic> _$$_PurpleSourceToJson(_$_PurpleSource instance) =>
+Map<String, dynamic> _$$PurpleSourceImplToJson(_$PurpleSourceImpl instance) =>
     <String, dynamic>{
       'sourceRecipeUrl': instance.sourceRecipeUrl,
       'sourceFaviconUrl': instance.sourceFaviconUrl,
@@ -1087,8 +1112,8 @@ Map<String, dynamic> _$$_PurpleSourceToJson(_$_PurpleSource instance) =>
       'marketingImage': instance.marketingImage,
     };
 
-_$_IntroVideo _$$_IntroVideoFromJson(Map<String, dynamic> json) =>
-    _$_IntroVideo(
+_$IntroVideoImpl _$$IntroVideoImplFromJson(Map<String, dynamic> json) =>
+    _$IntroVideoImpl(
       id: json['id'] as String?,
       originalUrl: json['originalUrl'] as String?,
       hlsUrl: json['hlsUrl'] as String?,
@@ -1099,7 +1124,7 @@ _$_IntroVideo _$$_IntroVideoFromJson(Map<String, dynamic> json) =>
           : Snapshot.fromJson(json['snapshot'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_IntroVideoToJson(_$_IntroVideo instance) =>
+Map<String, dynamic> _$$IntroVideoImplToJson(_$IntroVideoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'originalUrl': instance.originalUrl,
@@ -1109,28 +1134,30 @@ Map<String, dynamic> _$$_IntroVideoToJson(_$_IntroVideo instance) =>
       'snapshot': instance.snapshot,
     };
 
-_$_Snapshot _$$_SnapshotFromJson(Map<String, dynamic> json) => _$_Snapshot(
+_$SnapshotImpl _$$SnapshotImplFromJson(Map<String, dynamic> json) =>
+    _$SnapshotImpl(
       original: json['original'] as String?,
       resizable: json['resizable'] as String?,
     );
 
-Map<String, dynamic> _$$_SnapshotToJson(_$_Snapshot instance) =>
+Map<String, dynamic> _$$SnapshotImplToJson(_$SnapshotImpl instance) =>
     <String, dynamic>{
       'original': instance.original,
       'resizable': instance.resizable,
     };
 
-_$_SearchResult _$$_SearchResultFromJson(Map<String, dynamic> json) =>
-    _$_SearchResult(
+_$SearchResultImpl _$$SearchResultImplFromJson(Map<String, dynamic> json) =>
+    _$SearchResultImpl(
       score: (json['score'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_SearchResultToJson(_$_SearchResult instance) =>
+Map<String, dynamic> _$$SearchResultImplToJson(_$SearchResultImpl instance) =>
     <String, dynamic>{
       'score': instance.score,
     };
 
-_$_FeedSeo _$$_FeedSeoFromJson(Map<String, dynamic> json) => _$_FeedSeo(
+_$FeedSeoImpl _$$FeedSeoImplFromJson(Map<String, dynamic> json) =>
+    _$FeedSeoImpl(
       web: json['web'] == null
           ? null
           : PurpleWeb.fromJson(json['web'] as Map<String, dynamic>),
@@ -1143,15 +1170,15 @@ _$_FeedSeo _$$_FeedSeoFromJson(Map<String, dynamic> json) => _$_FeedSeo(
           : PurpleFirebase.fromJson(json['firebase'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_FeedSeoToJson(_$_FeedSeo instance) =>
+Map<String, dynamic> _$$FeedSeoImplToJson(_$FeedSeoImpl instance) =>
     <String, dynamic>{
       'web': instance.web,
       'spotlightSearch': instance.spotlightSearch,
       'firebase': instance.firebase,
     };
 
-_$_PurpleFirebase _$$_PurpleFirebaseFromJson(Map<String, dynamic> json) =>
-    _$_PurpleFirebase(
+_$PurpleFirebaseImpl _$$PurpleFirebaseImplFromJson(Map<String, dynamic> json) =>
+    _$PurpleFirebaseImpl(
       webUrl: json['webUrl'] as String?,
       appUrl: json['appUrl'] as String?,
       name: json['name'] as String?,
@@ -1159,7 +1186,8 @@ _$_PurpleFirebase _$$_PurpleFirebaseFromJson(Map<String, dynamic> json) =>
       noindex: json['noindex'] as bool?,
     );
 
-Map<String, dynamic> _$$_PurpleFirebaseToJson(_$_PurpleFirebase instance) =>
+Map<String, dynamic> _$$PurpleFirebaseImplToJson(
+        _$PurpleFirebaseImpl instance) =>
     <String, dynamic>{
       'webUrl': instance.webUrl,
       'appUrl': instance.appUrl,
@@ -1168,75 +1196,81 @@ Map<String, dynamic> _$$_PurpleFirebaseToJson(_$_PurpleFirebase instance) =>
       'noindex': instance.noindex,
     };
 
-_$_SpotlightSearch _$$_SpotlightSearchFromJson(Map<String, dynamic> json) =>
-    _$_SpotlightSearch(
+_$SpotlightSearchImpl _$$SpotlightSearchImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SpotlightSearchImpl(
       keywords: (json['keywords'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       noindex: json['noindex'] as bool?,
     );
 
-Map<String, dynamic> _$$_SpotlightSearchToJson(_$_SpotlightSearch instance) =>
+Map<String, dynamic> _$$SpotlightSearchImplToJson(
+        _$SpotlightSearchImpl instance) =>
     <String, dynamic>{
       'keywords': instance.keywords,
       'noindex': instance.noindex,
     };
 
-_$_PurpleWeb _$$_PurpleWebFromJson(Map<String, dynamic> json) => _$_PurpleWeb(
+_$PurpleWebImpl _$$PurpleWebImplFromJson(Map<String, dynamic> json) =>
+    _$PurpleWebImpl(
       noindex: json['noindex'] as bool?,
-      canonicalTerm: json['canonicalTerm'] as String?,
-      metaTags: json['metaTags'] == null
+      canonicalTerm: json['canonical-term'] as String?,
+      metaTags: json['meta-tags'] == null
           ? null
-          : MetaTags.fromJson(json['metaTags'] as Map<String, dynamic>),
-      linkTags: (json['linkTags'] as List<dynamic>?)
+          : MetaTags.fromJson(json['meta-tags'] as Map<String, dynamic>),
+      linkTags: (json['link-tags'] as List<dynamic>?)
           ?.map((e) => LinkTag.fromJson(e as Map<String, dynamic>))
           .toList(),
-      imageUrl: json['imageUrl'] as String?,
+      imageUrl: json['image-url'] as String?,
     );
 
-Map<String, dynamic> _$$_PurpleWebToJson(_$_PurpleWeb instance) =>
+Map<String, dynamic> _$$PurpleWebImplToJson(_$PurpleWebImpl instance) =>
     <String, dynamic>{
       'noindex': instance.noindex,
-      'canonicalTerm': instance.canonicalTerm,
-      'metaTags': instance.metaTags,
-      'linkTags': instance.linkTags,
-      'imageUrl': instance.imageUrl,
+      'canonical-term': instance.canonicalTerm,
+      'meta-tags': instance.metaTags,
+      'link-tags': instance.linkTags,
+      'image-url': instance.imageUrl,
     };
 
-_$_LinkTag _$$_LinkTagFromJson(Map<String, dynamic> json) => _$_LinkTag(
+_$LinkTagImpl _$$LinkTagImplFromJson(Map<String, dynamic> json) =>
+    _$LinkTagImpl(
       rel: json['rel'] as String?,
       href: json['href'] as String?,
       hreflang: json['hreflang'] as String?,
     );
 
-Map<String, dynamic> _$$_LinkTagToJson(_$_LinkTag instance) =>
+Map<String, dynamic> _$$LinkTagImplToJson(_$LinkTagImpl instance) =>
     <String, dynamic>{
       'rel': instance.rel,
       'href': instance.href,
       'hreflang': instance.hreflang,
     };
 
-_$_MetaTags _$$_MetaTagsFromJson(Map<String, dynamic> json) => _$_MetaTags(
+_$MetaTagsImpl _$$MetaTagsImplFromJson(Map<String, dynamic> json) =>
+    _$MetaTagsImpl(
       title: json['title'] as String?,
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$$_MetaTagsToJson(_$_MetaTags instance) =>
+Map<String, dynamic> _$$MetaTagsImplToJson(_$MetaTagsImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,
     };
 
-_$_Meta _$$_MetaFromJson(Map<String, dynamic> json) => _$_Meta(
+_$MetaImpl _$$MetaImplFromJson(Map<String, dynamic> json) => _$MetaImpl(
       parsedIngredients: json['parsedIngredients'] as List<dynamic>?,
     );
 
-Map<String, dynamic> _$$_MetaToJson(_$_Meta instance) => <String, dynamic>{
+Map<String, dynamic> _$$MetaImplToJson(_$MetaImpl instance) =>
+    <String, dynamic>{
       'parsedIngredients': instance.parsedIngredients,
     };
 
-_$_RelatedPhrases _$$_RelatedPhrasesFromJson(Map<String, dynamic> json) =>
-    _$_RelatedPhrases(
+_$RelatedPhrasesImpl _$$RelatedPhrasesImplFromJson(Map<String, dynamic> json) =>
+    _$RelatedPhrasesImpl(
       relatedPhrases: (json['relatedPhrases'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -1251,7 +1285,8 @@ _$_RelatedPhrases _$$_RelatedPhrasesFromJson(Map<String, dynamic> json) =>
       phrase: json['phrase'] as String?,
     );
 
-Map<String, dynamic> _$$_RelatedPhrasesToJson(_$_RelatedPhrases instance) =>
+Map<String, dynamic> _$$RelatedPhrasesImplToJson(
+        _$RelatedPhrasesImpl instance) =>
     <String, dynamic>{
       'relatedPhrases': instance.relatedPhrases,
       'unrelatedPhrases': instance.unrelatedPhrases,
@@ -1260,8 +1295,8 @@ Map<String, dynamic> _$$_RelatedPhrasesToJson(_$_RelatedPhrases instance) =>
       'phrase': instance.phrase,
     };
 
-_$_MatchesSeo _$$_MatchesSeoFromJson(Map<String, dynamic> json) =>
-    _$_MatchesSeo(
+_$MatchesSeoImpl _$$MatchesSeoImplFromJson(Map<String, dynamic> json) =>
+    _$MatchesSeoImpl(
       web: json['web'] == null
           ? null
           : FluffyWeb.fromJson(json['web'] as Map<String, dynamic>),
@@ -1270,37 +1305,39 @@ _$_MatchesSeo _$$_MatchesSeoFromJson(Map<String, dynamic> json) =>
           : PurpleFirebase.fromJson(json['firebase'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MatchesSeoToJson(_$_MatchesSeo instance) =>
+Map<String, dynamic> _$$MatchesSeoImplToJson(_$MatchesSeoImpl instance) =>
     <String, dynamic>{
       'web': instance.web,
       'firebase': instance.firebase,
     };
 
-_$_FluffyWeb _$$_FluffyWebFromJson(Map<String, dynamic> json) => _$_FluffyWeb(
+_$FluffyWebImpl _$$FluffyWebImplFromJson(Map<String, dynamic> json) =>
+    _$FluffyWebImpl(
       noindex: json['noindex'] as bool?,
       displayTitle: json['displayTitle'] as String?,
-      canonicalTerm: json['canonicalTerm'] as String?,
-      metaTags: json['metaTags'] == null
+      canonicalTerm: json['canonical-term'] as String?,
+      metaTags: json['meta-tags'] == null
           ? null
-          : MetaTags.fromJson(json['metaTags'] as Map<String, dynamic>),
-      linkTags: (json['linkTags'] as List<dynamic>?)
+          : MetaTags.fromJson(json['meta-tags'] as Map<String, dynamic>),
+      linkTags: (json['link-tags'] as List<dynamic>?)
           ?.map((e) => LinkTag.fromJson(e as Map<String, dynamic>))
           .toList(),
-      imageUrl: json['imageUrl'] as String?,
+      imageUrl: json['image-url'] as String?,
     );
 
-Map<String, dynamic> _$$_FluffyWebToJson(_$_FluffyWeb instance) =>
+Map<String, dynamic> _$$FluffyWebImplToJson(_$FluffyWebImpl instance) =>
     <String, dynamic>{
       'noindex': instance.noindex,
       'displayTitle': instance.displayTitle,
-      'canonicalTerm': instance.canonicalTerm,
-      'metaTags': instance.metaTags,
-      'linkTags': instance.linkTags,
-      'imageUrl': instance.imageUrl,
+      'canonical-term': instance.canonicalTerm,
+      'meta-tags': instance.metaTags,
+      'link-tags': instance.linkTags,
+      'image-url': instance.imageUrl,
     };
 
-_$_FluffyNutrition _$$_FluffyNutritionFromJson(Map<String, dynamic> json) =>
-    _$_FluffyNutrition(
+_$FluffyNutritionImpl _$$FluffyNutritionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$FluffyNutritionImpl(
       mobileSectionName: json['mobileSectionName'] as String?,
       nutritionEstimates: (json['nutritionEstimates'] as List<dynamic>?)
           ?.map((e) =>
@@ -1308,15 +1345,16 @@ _$_FluffyNutrition _$$_FluffyNutritionFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_FluffyNutritionToJson(_$_FluffyNutrition instance) =>
+Map<String, dynamic> _$$FluffyNutritionImplToJson(
+        _$FluffyNutritionImpl instance) =>
     <String, dynamic>{
       'mobileSectionName': instance.mobileSectionName,
       'nutritionEstimates': instance.nutritionEstimates,
     };
 
-_$_FluffyNutritionEstimate _$$_FluffyNutritionEstimateFromJson(
+_$FluffyNutritionEstimateImpl _$$FluffyNutritionEstimateImplFromJson(
         Map<String, dynamic> json) =>
-    _$_FluffyNutritionEstimate(
+    _$FluffyNutritionEstimateImpl(
       attribute: json['attribute'] as String?,
       value: (json['value'] as num?)?.toDouble(),
       unit: json['unit'] == null
@@ -1328,8 +1366,8 @@ _$_FluffyNutritionEstimate _$$_FluffyNutritionEstimateFromJson(
           : TentacledDisplay.fromJson(json['display'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_FluffyNutritionEstimateToJson(
-        _$_FluffyNutritionEstimate instance) =>
+Map<String, dynamic> _$$FluffyNutritionEstimateImplToJson(
+        _$FluffyNutritionEstimateImpl instance) =>
     <String, dynamic>{
       'attribute': instance.attribute,
       'value': instance.value,
@@ -1337,30 +1375,33 @@ Map<String, dynamic> _$$_FluffyNutritionEstimateToJson(
       'display': instance.display,
     };
 
-_$_TentacledDisplay _$$_TentacledDisplayFromJson(Map<String, dynamic> json) =>
-    _$_TentacledDisplay(
+_$TentacledDisplayImpl _$$TentacledDisplayImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TentacledDisplayImpl(
       value: json['value'],
       unit: json['unit'] as String?,
       percentDailyValue: (json['percentDailyValue'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$_TentacledDisplayToJson(_$_TentacledDisplay instance) =>
+Map<String, dynamic> _$$TentacledDisplayImplToJson(
+        _$TentacledDisplayImpl instance) =>
     <String, dynamic>{
       'value': instance.value,
       'unit': instance.unit,
       'percentDailyValue': instance.percentDailyValue,
     };
 
-_$_Search _$$_SearchFromJson(Map<String, dynamic> json) => _$_Search(
+_$SearchImpl _$$SearchImplFromJson(Map<String, dynamic> json) => _$SearchImpl(
       q: json['q'] as String?,
     );
 
-Map<String, dynamic> _$$_SearchToJson(_$_Search instance) => <String, dynamic>{
+Map<String, dynamic> _$$SearchImplToJson(_$SearchImpl instance) =>
+    <String, dynamic>{
       'q': instance.q,
     };
 
-_$_FluffyTags _$$_FluffyTagsFromJson(Map<String, dynamic> json) =>
-    _$_FluffyTags(
+_$FluffyTagsImpl _$$FluffyTagsImplFromJson(Map<String, dynamic> json) =>
+    _$FluffyTagsImpl(
       course: (json['course'] as List<dynamic>?)
           ?.map((e) => AllergyPreference.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -1390,7 +1431,7 @@ _$_FluffyTags _$$_FluffyTagsFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_FluffyTagsToJson(_$_FluffyTags instance) =>
+Map<String, dynamic> _$$FluffyTagsImplToJson(_$FluffyTagsImpl instance) =>
     <String, dynamic>{
       'course': instance.course,
       'dish': instance.dish,
@@ -1403,8 +1444,8 @@ Map<String, dynamic> _$$_FluffyTagsToJson(_$_FluffyTags instance) =>
       'pro': instance.pro,
     };
 
-_$_FluffyVideos _$$_FluffyVideosFromJson(Map<String, dynamic> json) =>
-    _$_FluffyVideos(
+_$FluffyVideosImpl _$$FluffyVideosImplFromJson(Map<String, dynamic> json) =>
+    _$FluffyVideosImpl(
       snapshotUrl: json['snapshotUrl'] as String?,
       videoUrls: json['videoUrls'] == null
           ? null
@@ -1419,7 +1460,7 @@ _$_FluffyVideos _$$_FluffyVideosFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['createTime'] as String),
     );
 
-Map<String, dynamic> _$$_FluffyVideosToJson(_$_FluffyVideos instance) =>
+Map<String, dynamic> _$$FluffyVideosImplToJson(_$FluffyVideosImpl instance) =>
     <String, dynamic>{
       'snapshotUrl': instance.snapshotUrl,
       'videoUrls': instance.videoUrls,
@@ -1428,8 +1469,8 @@ Map<String, dynamic> _$$_FluffyVideosToJson(_$_FluffyVideos instance) =>
       'createTime': instance.createTime?.toIso8601String(),
     };
 
-_$_StickyDisplay _$$_StickyDisplayFromJson(Map<String, dynamic> json) =>
-    _$_StickyDisplay(
+_$StickyDisplayImpl _$$StickyDisplayImplFromJson(Map<String, dynamic> json) =>
+    _$StickyDisplayImpl(
       displayName: json['displayName'] as String?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -1452,7 +1493,7 @@ _$_StickyDisplay _$$_StickyDisplayFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$_StickyDisplayToJson(_$_StickyDisplay instance) =>
+Map<String, dynamic> _$$StickyDisplayImplToJson(_$StickyDisplayImpl instance) =>
     <String, dynamic>{
       'displayName': instance.displayName,
       'images': instance.images,
@@ -1471,8 +1512,8 @@ Map<String, dynamic> _$$_StickyDisplayToJson(_$_StickyDisplay instance) =>
       'url': instance.url,
     };
 
-_$_FluffySource _$$_FluffySourceFromJson(Map<String, dynamic> json) =>
-    _$_FluffySource(
+_$FluffySourceImpl _$$FluffySourceImplFromJson(Map<String, dynamic> json) =>
+    _$FluffySourceImpl(
       sourceRecipeUrl: json['sourceRecipeUrl'] as String?,
       sourceFaviconUrl: json['sourceFaviconUrl'],
       sourceHttpsOk: json['sourceHttpsOk'] as bool?,
@@ -1490,7 +1531,7 @@ _$_FluffySource _$$_FluffySourceFromJson(Map<String, dynamic> json) =>
       marketingImage: json['marketingImage'] as String?,
     );
 
-Map<String, dynamic> _$$_FluffySourceToJson(_$_FluffySource instance) =>
+Map<String, dynamic> _$$FluffySourceImplToJson(_$FluffySourceImpl instance) =>
     <String, dynamic>{
       'sourceRecipeUrl': instance.sourceRecipeUrl,
       'sourceFaviconUrl': instance.sourceFaviconUrl,
@@ -1507,8 +1548,8 @@ Map<String, dynamic> _$$_FluffySourceToJson(_$_FluffySource instance) =>
       'marketingImage': instance.marketingImage,
     };
 
-_$_MealFeedSeo _$$_MealFeedSeoFromJson(Map<String, dynamic> json) =>
-    _$_MealFeedSeo(
+_$MealFeedSeoImpl _$$MealFeedSeoImplFromJson(Map<String, dynamic> json) =>
+    _$MealFeedSeoImpl(
       web: json['web'] == null
           ? null
           : SpotlightSearchClass.fromJson(json['web'] as Map<String, dynamic>),
@@ -1522,21 +1563,21 @@ _$_MealFeedSeo _$$_MealFeedSeoFromJson(Map<String, dynamic> json) =>
               json['firebase'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MealFeedSeoToJson(_$_MealFeedSeo instance) =>
+Map<String, dynamic> _$$MealFeedSeoImplToJson(_$MealFeedSeoImpl instance) =>
     <String, dynamic>{
       'web': instance.web,
       'spotlightSearch': instance.spotlightSearch,
       'firebase': instance.firebase,
     };
 
-_$_SpotlightSearchClass _$$_SpotlightSearchClassFromJson(
+_$SpotlightSearchClassImpl _$$SpotlightSearchClassImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SpotlightSearchClass(
+    _$SpotlightSearchClassImpl(
       noindex: json['noindex'] as bool?,
     );
 
-Map<String, dynamic> _$$_SpotlightSearchClassToJson(
-        _$_SpotlightSearchClass instance) =>
+Map<String, dynamic> _$$SpotlightSearchClassImplToJson(
+        _$SpotlightSearchClassImpl instance) =>
     <String, dynamic>{
       'noindex': instance.noindex,
     };

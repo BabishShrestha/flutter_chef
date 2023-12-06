@@ -3,9 +3,10 @@ import 'package:flutter_chef/core/widgets/category_title.dart';
 import 'package:flutter_chef/core/widgets/food_card.dart';
 import 'package:flutter_chef/features/recipe/domain/meal_yummly.dart';
 import 'package:flutter_chef/features/recipe/infrastructure/meal_controller.dart';
-import 'package:flutter_chef/features/recipe_detail/presentation/recipe_detail_view.dart';
+import 'package:flutter_chef/features/recipe_detail/recipe_detail_webview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 List<String> categories = [
   'All',
@@ -34,12 +35,13 @@ class _HomepageState extends ConsumerState<RecipeHomeView> {
 
   @override
   Widget build(BuildContext context) {
-    var scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: ListView(
-          controller: scrollController,
+        child: Column(
+          // controller: scrollController,
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
@@ -52,9 +54,6 @@ class _HomepageState extends ConsumerState<RecipeHomeView> {
                     );
                   })),
             ),
-            const SizedBox(
-              height: 30,
-            ),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -63,51 +62,59 @@ class _HomepageState extends ConsumerState<RecipeHomeView> {
                     fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.9,
+            Builder(builder: (context) {
+              final mealList = ref.watch(getMealController);
+              return mealList.maybeWhen(
+                  loading: () =>
+                      const Center(child: CircularProgressIndicator()),
+                  success: (data) {
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.7,
+                      child: ListView.builder(
+                          controller: scrollController,
+                          itemCount: data.length,
+                          itemBuilder: (context, index) {
+                            final MealFeedFeed recipe = data[index];
 
-              // height: MediaQuery.of(context).size.height,
-              child: ListView.builder(
-                  controller: scrollController,
-                  itemCount: 2,
-                  // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  //   crossAxisCount: 2,
-                  //   mainAxisSpacing: 18,
-                  //   crossAxisSpacing: 18,
-                  // ),
-                  itemBuilder: (context, index) {
-                    // final recipe = recipeList[0];
-                    final mealList = ref.watch(getMealController);
-                    return mealList.maybeWhen(
-                        loading: () =>
-                            const Center(child: CircularProgressIndicator()),
-                        success: (data) {
-                          final MealFeedFeed recipe = data[index];
-                          return FoodCard(
-                            title: recipe.display!.displayName!,
-                            image: recipe.display!.images![0],
-                            time: recipe.content!.details?.totalTime,
-                            description: recipe.seo?.web!.metaTags?.description,
-                            ingredient: recipe
-                                .content!.ingredientLines?[index].ingredient,
-                            height: MediaQuery.of(context).size.height * 0.25,
-                            width: MediaQuery.of(context).size.width,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return RecipeDetailView(
-                                    mealFeedDetails: recipe,
-                                    // recipe: recipe,
-                                  );
-                                }),
-                              );
-                            },
-                          );
-                        },
-                        orElse: () => const SizedBox());
-                  }),
-            )
+                            return FoodCard(
+                              title: recipe.display?.displayName ??
+                                  recipe.display?.title ??
+                                  'No title',
+                              image: recipe.display!.images![0],
+                              time: recipe.content!.details?.totalTime,
+                              description:
+                                  recipe.seo?.web!.metaTags?.description,
+                              ingredient: recipe
+                                  .content!.ingredientLines?[index].ingredient,
+                              height: MediaQuery.of(context).size.height * 0.25,
+                              width: MediaQuery.of(context).size.width,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return RecipeWebView(
+                                      url: recipe.content?.details
+                                              ?.directionsUrl ??
+                                          'https://www.youtube.com/',
+                                    );
+                                  }),
+                                );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(builder: (context) {
+                                //     return RecipeDetailView(
+                                //       mealFeedDetails: recipe,
+                                //       // recipe: recipe,
+                                //     );
+                                //   }),
+                                // );
+                              },
+                            );
+                          }),
+                    );
+                  },
+                  orElse: () => const SizedBox());
+            })
           ],
         ),
       ),

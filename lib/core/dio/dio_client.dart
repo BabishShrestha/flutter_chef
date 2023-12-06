@@ -22,8 +22,8 @@ final dioProvider = Provider<Dio>(
 
       validateStatus: (status) =>
           status != null && status == 200 && status < 400,
-      connectTimeout: 30000, //30 sec
-      receiveTimeout: 30000, //30 sec
+      connectTimeout: const Duration(seconds: 30), //30 sec
+      receiveTimeout: const Duration(seconds: 30), //30 sec
       //     queryParameters: {
       //   'api_key': '47b0d5161e0fc8cc1fae4b572f638d6d',
       //   // 'page': '1'

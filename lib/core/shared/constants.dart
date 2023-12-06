@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 //ColorTheme
 const kPrimaryScaffoldColor = Colors.white;
@@ -19,14 +20,9 @@ const imageUrl =
 IconData icon = FontAwesomeIcons.heart;
 
 //For Widget Style
-const kProfileTitlestyle = TextStyle(
-  wordSpacing: 6,
-  fontSize: 16,
-  fontFamily: 'Source Sans Pro',
-);
+final kProfileTitlestyle = GoogleFonts.poppins();
 
-const kProfileTextstyle = TextStyle(
+final kProfileTextstyle = GoogleFonts.poppins(
   fontSize: 20,
-  fontFamily: 'Pacifico',
   fontWeight: FontWeight.normal,
 );
