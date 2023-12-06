@@ -5,6 +5,8 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
+final loadingProvider = StateProvider<bool>((ref) => false);
+
 class RecipeWebView extends ConsumerWidget {
   final String url;
 
@@ -13,7 +15,6 @@ class RecipeWebView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final loadingProvider = StateProvider<bool>((ref) => false);
     late final PlatformWebViewControllerCreationParams params;
     if (WebViewPlatform.instance is WebKitWebViewPlatform) {
       params = WebKitWebViewControllerCreationParams(
@@ -27,6 +28,25 @@ class RecipeWebView extends ConsumerWidget {
     final WebViewController controller =
         WebViewController.fromPlatformCreationParams(params);
 
+    setupWebView(controller, ref, context);
+    // controller.loadRequest(Uri.parse(url));
+
+    return Scaffold(
+        appBar: const FlutterChefAppBar(
+          title: 'Recipe Details',
+        ),
+        body: Consumer(
+          builder: (context, ref, child) {
+            if (ref.watch(loadingProvider)) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return WebViewWidget(controller: controller);
+            }
+          },
+        ));
+  }
+
+  void setupWebView(WebViewController controller, ref, context) {
     controller
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
@@ -81,20 +101,5 @@ Page resource error:
       (controller.platform as AndroidWebViewController)
           .setMediaPlaybackRequiresUserGesture(false);
     }
-    // controller.loadRequest(Uri.parse(url));
-
-    return Scaffold(
-        appBar: const FlutterChefAppBar(
-          title: 'Recipe Details',
-        ),
-        body: Consumer(
-          builder: (context, ref, child) {
-            if (ref.watch(loadingProvider)) {
-              return const Center(child: CircularProgressIndicator());
-            } else {
-              return WebViewWidget(controller: controller);
-            }
-          },
-        ));
   }
 }
