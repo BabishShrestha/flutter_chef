@@ -23,6 +23,6 @@ IconData icon = FontAwesomeIcons.heart;
 final kProfileTitlestyle = GoogleFonts.poppins();
 
 final kProfileTextstyle = GoogleFonts.poppins(
-  fontSize: 20,
+  fontSize: 16,
   fontWeight: FontWeight.normal,
 );

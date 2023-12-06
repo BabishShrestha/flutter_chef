@@ -88,8 +88,7 @@ class _HomepageState extends ConsumerState<RecipeHomeView> {
                               height: MediaQuery.of(context).size.height * 0.25,
                               width: MediaQuery.of(context).size.width,
                               onTap: () {
-                                Navigator.push(
-                                  context,
+                                Navigator.of(context).push(
                                   MaterialPageRoute(builder: (context) {
                                     return RecipeWebView(
                                       url: recipe.content?.details

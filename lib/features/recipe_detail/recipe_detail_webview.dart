@@ -34,6 +34,7 @@ class RecipeWebView extends ConsumerWidget {
     return Scaffold(
         appBar: const FlutterChefAppBar(
           title: 'Recipe Details',
+          showBackButton: true,
         ),
         body: Consumer(
           builder: (context, ref, child) {
