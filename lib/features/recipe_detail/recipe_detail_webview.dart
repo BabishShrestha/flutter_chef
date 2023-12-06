@@ -5,15 +5,15 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
-class RecipeWebView extends StatelessWidget {
+class RecipeWebView extends ConsumerWidget {
   final String url;
 
   // final String url;
   const RecipeWebView({super.key, required this.url});
 
   @override
-  Widget build(BuildContext context) {
-    bool isLoading = false;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loadingProvider = StateProvider<bool>((ref) => false);
     late final PlatformWebViewControllerCreationParams params;
     if (WebViewPlatform.instance is WebKitWebViewPlatform) {
       params = WebKitWebViewControllerCreationParams(
@@ -34,14 +34,14 @@ class RecipeWebView extends StatelessWidget {
         NavigationDelegate(
           onProgress: (int progress) {
             debugPrint('WebView is loading (progress : $progress%)');
-            isLoading = true;
+            ref.read(loadingProvider.notifier).state = true;
           },
           onPageStarted: (String url) {
             debugPrint('Page started loading: $url');
           },
           onPageFinished: (String url) {
             debugPrint('Page finished loading: $url');
-            isLoading = false;
+            ref.read(loadingProvider.notifier).state = false;
           },
           onWebResourceError: (WebResourceError error) {
             debugPrint('''
@@ -89,7 +89,7 @@ Page resource error:
         ),
         body: Consumer(
           builder: (context, ref, child) {
-            if (isLoading) {
+            if (ref.watch(loadingProvider)) {
               return const Center(child: CircularProgressIndicator());
             } else {
               return WebViewWidget(controller: controller);
