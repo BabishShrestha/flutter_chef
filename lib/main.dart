@@ -1,15 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chef/features/home/nav_bar_view.dart';
-import 'package:flutter_chef/features/recipe/recipe_home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'core/shared/category_menu.dart';
 import 'core/shared/constants.dart';
-import 'features/profile/profile.dart';
-import 'features/recipe/presentation/random_meal_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: FlutterChef()));

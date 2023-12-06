@@ -73,7 +73,7 @@ class Description with _$Description {
   const factory Description({
     String? mobileSectionName,
     String? text,
-    dynamic? shortText,
+    dynamic shortText,
   }) = _Description;
 
   factory Description.fromJson(Map<String, dynamic> json) =>
@@ -89,7 +89,7 @@ class Details with _$Details {
     List<Image>? images,
     String? name,
     List<String>? keywords,
-    dynamic? brand,
+    dynamic brand,
     String? id,
     Attribution? attribution,
     String? recipeId,
@@ -212,7 +212,7 @@ class Matches with _$Matches {
     MatchesSeo? seo,
     List<MatchesFeed>? feed,
     List<dynamic>? parsedIngredients,
-    dynamic? indexableMatches,
+    dynamic indexableMatches,
     Meta? meta,
     RelatedPhrases? relatedPhrases,
     int? adTrackingCampaign,
@@ -220,9 +220,9 @@ class Matches with _$Matches {
     IngredientMatchCount? ingredientMatchCount,
     int? totalMatchCount,
     bool? noindex,
-    dynamic? adTargetingPhrase,
+    dynamic adTargetingPhrase,
     List<dynamic>? unrelatedSearchResults,
-    dynamic? relatedSearchResults,
+    dynamic relatedSearchResults,
   }) = _Matches;
 
   factory Matches.fromJson(Map<String, dynamic> json) =>
@@ -237,29 +237,29 @@ class Criteria with _$Criteria {
     IngredientMatchCount? flavor,
     bool? fullReviews,
     String? locale,
-    dynamic? time,
+    dynamic time,
     bool? connected,
     bool? fetchRecipes,
     bool? ignoreTastePref,
     bool? myyums,
     bool? expandRelatedSearches,
     int? timeoutMillis,
-    dynamic? facetFields,
+    dynamic facetFields,
     bool? requirePictures,
     IngredientMatchCount? passthrough,
     int? reviewsPerRecipe,
     IngredientMatchCount? ingredients,
     int? max,
-    dynamic? ingredientCount,
-    dynamic? imageSize,
+    dynamic ingredientCount,
+    dynamic imageSize,
     bool? recipeUnsearchable,
     bool? guided,
     bool? autocomplete,
     int? timeout,
     IngredientMatchCount? nutrition,
     bool? recognitionEnabled,
-    dynamic? skip,
-    dynamic? reviewImagesPerRecipe,
+    dynamic skip,
+    dynamic reviewImagesPerRecipe,
   }) = _Criteria;
 
   factory Criteria.fromJson(Map<String, dynamic> json) =>
@@ -522,7 +522,7 @@ class PurpleNutritionEstimate with _$PurpleNutritionEstimate {
 @freezed
 class PurpleDisplay with _$PurpleDisplay {
   const factory PurpleDisplay({
-    dynamic? value,
+    dynamic value,
     String? unit,
     double? percentDailyValue,
   }) = _PurpleDisplay;
@@ -570,7 +570,7 @@ class Reviews with _$Reviews {
     int? totalReviewCount,
     double? averageRating,
     List<dynamic>? reviews,
-    dynamic? thisUserReview,
+    dynamic thisUserReview,
     String? sortBy,
   }) = _Reviews;
 
@@ -691,7 +691,7 @@ class FluffyDisplay with _$FluffyDisplay {
   const factory FluffyDisplay({
      @JsonKey(name:'display-name') String? displayName,
     List<String>? images,
-    dynamic? flag,
+    dynamic flag,
     PurpleSource? source,
     List<Profile>? profiles,
     bool? displayPrepStepsInline,
@@ -727,18 +727,18 @@ class Profile with _$Profile {
 class PurpleSource with _$PurpleSource {
   const factory PurpleSource({
     String? sourceRecipeUrl,
-    dynamic? sourceFaviconUrl,
+    dynamic sourceFaviconUrl,
     bool? sourceHttpsOk,
     bool? sourceInFrame,
     String? sourceDisplayName,
-    dynamic? proSource,
+    dynamic proSource,
     String? sourceSiteUrl,
     IntroVideo? introVideo,
-    dynamic? eyebrowText,
+    dynamic eyebrowText,
     String? sourcePageUrl,
-    dynamic? marketingCopy,
+    dynamic marketingCopy,
     bool? sourceHttpOk,
-    dynamic? marketingImage,
+    dynamic marketingImage,
   }) = _PurpleSource;
 
   factory PurpleSource.fromJson(Map<String, dynamic> json) =>
@@ -948,7 +948,7 @@ class FluffyNutritionEstimate with _$FluffyNutritionEstimate {
 @freezed
 class TentacledDisplay with _$TentacledDisplay {
   const factory TentacledDisplay({
-    dynamic? value,
+    dynamic value,
     String? unit,
     double? percentDailyValue,
   }) = _TentacledDisplay;
@@ -1010,11 +1010,11 @@ class StickyDisplay with _$StickyDisplay {
     List<dynamic>? collections,
     String? displayNameH2,
     String? title,
-    dynamic? description,
-    dynamic? callToActionText,
+    dynamic description,
+    dynamic callToActionText,
     String? cardType,
     String? textLocation,
-    dynamic? iconImage,
+    dynamic iconImage,
     String? url,
   }) = _StickyDisplay;
 
@@ -1026,7 +1026,7 @@ class StickyDisplay with _$StickyDisplay {
 class FluffySource with _$FluffySource {
   const factory FluffySource({
     String? sourceRecipeUrl,
-    dynamic? sourceFaviconUrl,
+    dynamic sourceFaviconUrl,
     bool? sourceHttpsOk,
     bool? sourceInFrame,
     String? sourceDisplayName,

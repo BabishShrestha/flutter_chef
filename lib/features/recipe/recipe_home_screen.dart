@@ -6,7 +6,6 @@ import 'package:flutter_chef/features/recipe/infrastructure/meal_controller.dart
 import 'package:flutter_chef/features/recipe_detail/recipe_detail_webview.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 List<String> categories = [
   'All',

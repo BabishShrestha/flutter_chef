@@ -6,10 +6,10 @@ class CategoryTitle extends StatelessWidget {
   final bool active;
 
   const CategoryTitle({
-    Key? key,
+    super.key,
     this.active = false,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

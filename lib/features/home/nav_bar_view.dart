@@ -11,7 +11,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import '../../../../core/utils/utils.dart';
 
 class CustomNavBarView extends ConsumerStatefulWidget {
-  const CustomNavBarView({Key? key}) : super(key: key);
+  const CustomNavBarView({super.key});
 
   @override
   ConsumerState<CustomNavBarView> createState() => _NewCustomNavBarViewState();
@@ -50,7 +50,7 @@ enum NavBarItem { home, tasks, reports, settings }
 final _selectedTab = StateProvider<NavBarItem>((ref) => NavBarItem.home);
 
 class CustomBottomAppBar extends ConsumerWidget {
-  const CustomBottomAppBar({Key? key}) : super(key: key);
+  const CustomBottomAppBar({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

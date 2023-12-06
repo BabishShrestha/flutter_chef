@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'interceptors/request_interceptors.dart';
 
 final baseUrlProvider =
-    Provider<String>((ref) => "https://yummly2.p.rapidapi.com/"
+    Provider<String>((ref) => 'https://yummly2.p.rapidapi.com/'
         // "https://www.themealdb.com/api/json/v1/1/",
         );
 final dioProvider = Provider<Dio>(

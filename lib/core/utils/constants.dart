@@ -26,23 +26,23 @@ const List<String> appBarTitleList = [
 ];
 
 const List<String> taskLabelList = [
-  "All Tasks",
-  "Pending Tasks",
-  "Ongoing Tasks",
-  "Completed Tasks",
+  'All Tasks',
+  'Pending Tasks',
+  'Ongoing Tasks',
+  'Completed Tasks',
 ];
 
 const List<String> leadDetailSubtitle = [
-  "Total",
-  "Cold",
-  "Warm",
-  "Hot",
+  'Total',
+  'Cold',
+  'Warm',
+  'Hot',
 ];
 const List<String> leadDetailValue = [
-  "60",
-  "20",
-  "10",
-  "30",
+  '60',
+  '20',
+  '10',
+  '30',
 ];
 const List<Color> leadDetailColor = [
   UIColors.black,
@@ -51,14 +51,14 @@ const List<Color> leadDetailColor = [
   Color(0xffECB382),
 ];
 const List<String> taskDetailSubtitle = [
-  "Installation",
-  "Renewed",
-  "Expiring",
+  'Installation',
+  'Renewed',
+  'Expiring',
 ];
 const List<String> taskDetailValue = [
-  "40",
-  "20",
-  "10",
+  '40',
+  '20',
+  '10',
 ];
 const List<Color> taskDetailColor = [
   Color(0xff00b074),
@@ -67,15 +67,15 @@ const List<Color> taskDetailColor = [
 ];
 
 const List<String> ticketDetailSubtitle = [
-  "Total",
-  "Resolved",
-  "Unresolved",
+  'Total',
+  'Resolved',
+  'Unresolved',
 ];
 
 const List<String> ticketDetailValue = [
-  "50",
-  "20",
-  "30",
+  '50',
+  '20',
+  '30',
 ];
 const List<Color> ticketDetailColor = [
   UIColors.black,
@@ -84,14 +84,14 @@ const List<Color> ticketDetailColor = [
 ];
 
 const List<String> oltDetailSubtitle = [
-  "Total",
-  "Active",
-  "Inactive",
+  'Total',
+  'Active',
+  'Inactive',
 ];
 const List<String> oltDetailValue = [
-  "70",
-  "66",
-  "4",
+  '70',
+  '66',
+  '4',
 ];
 const List<Color> oltDetailColor = [
   UIColors.black,
@@ -99,26 +99,26 @@ const List<Color> oltDetailColor = [
   Color(0xffF95959),
 ];
 const List<String> oltTempSubtitle = [
-  "Normal",
-  "Overheat",
+  'Normal',
+  'Overheat',
 ];
 const List<String> oltTempValue = [
-  "40",
-  "30",
+  '40',
+  '30',
 ];
 const List<Color> oltTempColor = [
   Color(0xff00b074),
   Color(0xffF95959),
 ];
 const List<String> customerDetailSubtitle = [
-  "Total",
-  "Expiring\n(30 Days)",
-  "Terminated",
+  'Total',
+  'Expiring\n(30 Days)',
+  'Terminated',
 ];
 const List<String> customerDetailValue = [
-  "650000",
-  "500",
-  "1000",
+  '650000',
+  '500',
+  '1000',
 ];
 const List<Color> customerDetailColor = [
   UIColors.black,
@@ -126,21 +126,21 @@ const List<Color> customerDetailColor = [
   Color(0xffF95959),
 ];
 const List<String> filterList = [
-  "Daily",
-  "Weekly",
-  "Monthly",
+  'Daily',
+  'Weekly',
+  'Monthly',
 ];
 const List<String> taskFilterType = [
-  "All",
-  "Pending",
-  "Ongoing",
-  "Completed",
+  'All',
+  'Pending',
+  'Ongoing',
+  'Completed',
 ];
 const List<String> taskType = [
-  "Installation",
-  "Relocation",
-  "Maintenance",
-  "Termination",
+  'Installation',
+  'Relocation',
+  'Maintenance',
+  'Termination',
 ];
 
 class AppConst {

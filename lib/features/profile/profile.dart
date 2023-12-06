@@ -66,10 +66,10 @@ class Profile extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(left: 100),
                     padding: const EdgeInsets.only(top: 180),
-                    child: Column(
-                      children: const <Widget>[
+                    child: const Column(
+                      children: <Widget>[
                         BuildProfile(
-                            text: "Name", subtext: "     Babish Shrestha"),
+                            text: 'Name', subtext: '     Babish Shrestha'),
                         SizedBox(height: 16),
                         SizedBox(
                           height: 20,

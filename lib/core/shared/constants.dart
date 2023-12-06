@@ -14,7 +14,7 @@ const animatedcolor = AlwaysStoppedAnimation<Color>(kPrimaryColor);
 
 //imageUrl
 const imageUrl =
-    "https://firebasestorage.googleapis.com/v0/b/smartbin-test.appspot.com/o/Babish.jpg?alt=media&token=9cb9bcbb-9e13-4a8d-9912-06b5110e5cd6";
+    'https://firebasestorage.googleapis.com/v0/b/smartbin-test.appspot.com/o/Babish.jpg?alt=media&token=9cb9bcbb-9e13-4a8d-9912-06b5110e5cd6';
 
 //Constants for Widgets
 IconData icon = FontAwesomeIcons.heart;

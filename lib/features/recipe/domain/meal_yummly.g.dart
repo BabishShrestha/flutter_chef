@@ -463,7 +463,7 @@ Map<String, dynamic> _$$CriteriaImplToJson(_$CriteriaImpl instance) =>
 
 _$IngredientMatchCountImpl _$$IngredientMatchCountImplFromJson(
         Map<String, dynamic> json) =>
-    _$IngredientMatchCountImpl();
+    const _$IngredientMatchCountImpl();
 
 Map<String, dynamic> _$$IngredientMatchCountImplToJson(
         _$IngredientMatchCountImpl instance) =>

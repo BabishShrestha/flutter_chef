@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_chef/features/recipe/domain/meal.dart';
 import 'package:flutter_chef/features/recipe/infrastructure/meal_controller.dart';
-import 'package:flutter_chef/features/recipe/infrastructure/repository/meal_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
